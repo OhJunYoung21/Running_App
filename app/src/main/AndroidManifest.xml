@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <dist:module dist:instant="true" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +16,7 @@
         android:theme="@style/Theme.Running_Beta"
         tools:targetApi="31">
         <activity
-            android:name=".Splash_Activity"
+            android:name=".SplashActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

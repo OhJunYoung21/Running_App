@@ -8,5 +8,12 @@
 
     <style name="Theme.Running_Beta" parent="Base.Theme.Running_Beta" />
 
+    <style name="Theme.running.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/material_dynamic_primary90</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/run</item>
+        <item name="windowSplashScreenAnimationDuration">700</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.Running_Beta</item>
+    </style>
+
 
 </resources>

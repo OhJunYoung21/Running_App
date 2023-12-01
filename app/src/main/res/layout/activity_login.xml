@@ -6,7 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-
+    <TextView
+        android:id = "@+id/loginTitle"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/material_dynamic_primary50"
+        android:textSize = "40sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/idLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "R.U.N"/>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -21,12 +32,14 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="ID"
             android:id = "@+id/loginId"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         app:layout_constraintRight_toRightOf="parent"
+        app:passwordToggleEnabled="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/idLayout"
         android:layout_width="200dp"
@@ -35,7 +48,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:inputType="numberPassword"
             android:layout_height="wrap_content"
+            android:hint="PASSWORD"
             android:id = "@+id/loginPw"/>
 
     </com.google.android.material.textfield.TextInputLayout>

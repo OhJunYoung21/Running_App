@@ -8,6 +8,10 @@ android {
     namespace 'com.test.running_beta'
     compileSdk 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId "com.test.running_beta"
         minSdk 31
@@ -19,6 +23,7 @@ android {
     }
 
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

@@ -7,4 +7,4 @@
 
 [2.RoomDB 로그인 구현](https://github.com/OhJunYoung21/Running_App/blob/main/%5BRoomDB%5D로그인.md)
 
-[UI제작](https://www.figma.com/file/gzRmhDRS5YQ6mzujyNxlVj/Running?type=design&node-id=0-1&mode=design&t=Md0rHrzfrOMONB8D-0)
+[3.UI제작](https://www.figma.com/file/gzRmhDRS5YQ6mzujyNxlVj/Running?type=design&node-id=0-1&mode=design&t=Md0rHrzfrOMONB8D-0)

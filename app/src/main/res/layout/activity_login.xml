@@ -4,20 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_dynamic_primary90"
     tools:context=".LoginActivity">
 
-    <TextView
-        android:id = "@+id/loginTitle"
-        android:layout_marginBottom="15dp"
-        android:textColor="@color/material_dynamic_primary50"
-        android:textSize = "40sp"
-        android:gravity="center"
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src = "@drawable/run"
         app:layout_constraintBottom_toTopOf="@id/idLayout"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text = "R.U.N"/>
+        app:layout_constraintRight_toRightOf="parent"/>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -68,6 +64,64 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordLayout" />
+
+
+    <Button
+        android:id = "@+id/join"
+        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginBtn"
+        android:text = "회원가입"
+        android:textColor="@color/material_dynamic_neutral10"
+        android:backgroundTint="@color/material_dynamic_primary90"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/loginBtn"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+
+        <Button
+            android:id = "@+id/findId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginBtn"
+            android:backgroundTint="@color/material_dynamic_primary90"
+            android:textColor="@color/material_dynamic_neutral10"
+            android:text = "아이디 찾기"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "|"
+            android:textColor="@color/material_dynamic_neutral10" />
+
+        <Button
+            android:id = "@+id/findPw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginBtn"
+            android:backgroundTint="@color/material_dynamic_primary90"
+            android:textColor="@color/material_dynamic_neutral10"
+            android:text = "비밀번호 찾기"/>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
 
 
 

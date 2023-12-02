@@ -37,6 +37,8 @@
         app:layout_constraintTop_toBottomOf="@id/userName"/>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
+        android:id = "@+id/userIdLayout"
         app:layout_constraintTop_toBottomOf="@id/userNumber"
         android:layout_width="match_parent"
         android:orientation="horizontal"
@@ -69,6 +71,55 @@
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id = "@+id/userPwLayout"
+        app:layout_constraintTop_toBottomOf="@id/userIdLayout"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userIdLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/userPw"
+                android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/material_dynamic_neutral20"
+                android:layout_height="60dp"
+                android:hint = "비밀번호를 입력하세요" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userIdLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/userPwRe"
+                android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/material_dynamic_neutral20"
+                android:layout_height="60dp"
+                android:hint = "비밀번호를 다시 입력하세요" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </LinearLayout>
+
+
 
 
 

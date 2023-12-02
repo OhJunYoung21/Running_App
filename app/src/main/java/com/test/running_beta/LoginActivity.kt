@@ -2,6 +2,7 @@ package com.test.running_beta
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.test.running_beta.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {

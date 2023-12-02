@@ -16,8 +16,11 @@
         android:theme="@style/Theme.Running_Beta"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".JoinActivity"
             android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -12,3 +12,6 @@
 [2.RoomDB 로그인 구현](https://github.com/OhJunYoung21/Running_App/blob/main/%5BRoomDB%5D로그인.md)
 
 
+[3.RoomDB 로직 구현](https://github.com/OhJunYoung21/Running_App/blob/main/roomDB%20회원가입%20로직.md)
+
+

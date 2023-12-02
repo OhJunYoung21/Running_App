@@ -114,6 +114,44 @@
                 android:hint = "비밀번호를 다시 입력하세요" />
 
         </com.google.android.material.textfield.TextInputLayout>
+        
+
+        <RadioGroup
+            android:layout_marginStart="20dp"
+
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "남자"
+                android:id = "@+id/genderMale"/>
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "여자"
+                android:id = "@+id/genderFemale"/>
+
+
+        </RadioGroup>
+
+        
+        <Button
+            android:stateListAnimator="@null"
+            android:elevation="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text = "회원가입 완료"
+            android:backgroundTint="#69976B"/>
 
 
 

@@ -31,6 +31,32 @@ data class UserEntity(
 
 Entity는 개발자가 각 사용자의 정보를 저장하는 테이블의 형식이다. 위 코드를 보면 테이블의 이름은 userInfo이며, name,phoneNumber,id,password,gender의 열을 가지고 있다.
 
+---
+
+* DAO(Data Accesion Object)
+
+~~~kotlin
+@Dao
+interface LoginDAO {
+    @Query("SELECT id FROM userInfo")
+    fun getEmailList(): List<String>    // 등록된 회원인지 확인
+
+    @Query("SELECT password FROM userinfo WHERE id = id")    // 전화번호에 따른 비밀번호 반환
+    fun getPasswordByEmail(email: String): String
+
+    @Insert
+    fun insertUser(userInfo: UserEntity)    // 회원 등록
+
+    @Query("DELETE FROM userinfo WHERE phoneNumber = phoneNumber AND password = :password")
+    fun deleteUser(id: String, password: String)    // 회원 삭제
+}
+~~~
+
+RoomDB를 사용하면 userInfo라는 데이터테이블에 직접 접근하는 것이 아니고, DAO객체를 통해서 간접적으로 접근합니다. 그래서 DAO객체를 선언하고, CRUD메소드를 선언해줘야 합니다.
+
+<div>Create,Read,Update,Delete가 roomDB에는 @Insert, @Query,@Update,@Delete입니다.</div>
+
+CRUD는 말은 거창하지만, 데이터에 접근해서 어떤 작업을 수행할지를 정하는 것입니다. 예를 들어서 내가 데이터 테이블에 접근해서 id가 junyoung인 객체의 password를 알아오고 싶다면, Query문을 사용해서 데이터를 읽어오면 되겠죠? Query는 Read와 동일한 기능입니다.
 
 
 

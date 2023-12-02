@@ -1,18 +1,33 @@
 package com.test.running_beta
 
+import android.content.Intent
+import android.graphics.Paint.Join
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.test.running_beta.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
-    lateinit var binding:ActivityLoginBinding
+    private lateinit var binding:ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
+        binding.join.setOnClickListener {
+
+            val intent:Intent = Intent(this,JoinActivity::class.java)
+
+            startActivity(intent)
+
+        }
+
+
+
 
 
     }

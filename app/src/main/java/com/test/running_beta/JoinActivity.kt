@@ -18,9 +18,12 @@ class JoinActivity : AppCompatActivity() {
     lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_join)
 
         binding = ActivityJoinBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
+
 
         db = AppDatabase.getInstance(this)
 

@@ -47,7 +47,7 @@ Cannot access database on the main thread since it may potentially lock the UI f
 
 <div>위 오류의 뜻은 무엇인가?</div>
 
-구글링을 해보면, 비동기작업을 메인쓰레드에서 실행하기 때문이라고 한다. 근데 이게 뭔 소리인지 나는 모르기때문에 조금 더 자세히 찾아보았다.
+구글링을 해보면, 비동기작업을 메인쓰레드에서 실행하기 때문이라고 한다. 이렇게만 설명하면 이해하기 어렵기 떄문에, 좀 더 자세히 설명하도록 하겠다.
 
 
 안드로이드에서 MainThread는 UI Thread이다. 즉, 주된 업무는 사용자와 상호작용하는 화면을 보여주는 것이 주된 업무라는 것이다.

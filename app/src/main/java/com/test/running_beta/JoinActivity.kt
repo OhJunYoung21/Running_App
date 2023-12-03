@@ -35,12 +35,12 @@ class JoinActivity : AppCompatActivity() {
 
                 id = binding.userId.text.toString()
                 if (db.getUserDAO().getIdList().contains(id)) {
-
+                    runOnUiThread{ Toast.makeText(this, "이미 사용중인 아이디입니다.\n 다시입력하세요.", Toast.LENGTH_SHORT).show() }
                 }
 
                 //아이디가 중복되지 않는 경우, 메세지 출력(토스트 메세지 또는 다이알로그)
                 else{
-
+                    runOnUiThread{ Toast.makeText(this, "사용가능한 아이디입니다.", Toast.LENGTH_SHORT).show() }
                 }
             }
             val thread = Thread(newThread)

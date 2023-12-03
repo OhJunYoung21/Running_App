@@ -24,17 +24,29 @@ class JoinActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         db = AppDatabase.getInstance(this)
 
         //아이디 중복확인 버튼 클릭시 발생하는 이벤트 처리
         binding.checkId.setOnClickListener {
-            id = binding.userId.text.toString()
-            if (db.getUserDAO().getIdList().contains(id)) {
-                Toast.makeText(
-                    this, "이미 사용중인 아이디입니다.\n 다시 입력하세요", Toast.LENGTH_SHORT
-                )
+
+            //아이디가 중복되는 경우
+
+            val newThread = Runnable {
+
+                id = binding.userId.text.toString()
+                if (db.getUserDAO().getIdList().contains(id)) {
+
+                }
+
+                //아이디가 중복되지 않는 경우, 메세지 출력(토스트 메세지 또는 다이알로그)
+                else{
+
+                }
             }
+            val thread = Thread(newThread)
+
+            thread.start()
+
         }
 
 

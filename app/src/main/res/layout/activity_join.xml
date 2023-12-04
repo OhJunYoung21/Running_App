@@ -137,15 +137,13 @@
         
 
         <RadioGroup
+            android:id = "@+id/genderCheck"
             android:layout_marginStart="20dp"
-
             android:weightSum="2"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-
 
             <RadioButton
                 android:layout_weight="1"

@@ -1,7 +1,9 @@
 package com.test.running_beta
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.room.Database
 import com.test.running_beta.databinding.ActivityJoinBinding
@@ -25,6 +27,14 @@ class JoinActivity : AppCompatActivity() {
 
 
         db = AppDatabase.getInstance(this)
+
+        //toolbar에 뒤로가기 버튼 구현
+
+        setSupportActionBar(binding.toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        supportActionBar?.setTitle(" ")
 
         //아이디 중복확인 버튼 클릭시 발생하는 이벤트 처리
         binding.checkId.setOnClickListener {
@@ -50,5 +60,21 @@ class JoinActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+
+                val intent = Intent(this,LoginActivity::class.java)
+
+                startActivity(intent)
+
+                return true
+
+            }
+            else -> {}
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

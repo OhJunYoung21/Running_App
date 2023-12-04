@@ -41,13 +41,13 @@
         android:id="@+id/userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:hint="이름을 입력하세요"
         app:layout_constraintTop_toBottomOf="@id/logo"
          />
 
     <EditText
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint = "전화번호를 입력하세요"
@@ -56,7 +56,8 @@
         app:layout_constraintTop_toBottomOf="@id/userName"/>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:weightSum="5"
+        android:layout_margin="10dp"
         android:id = "@+id/userIdLayout"
         app:layout_constraintTop_toBottomOf="@id/userNumber"
         android:layout_width="match_parent"
@@ -64,31 +65,33 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:layout_weight="4"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id = "@+id/idLayout"
+            android:hint = "ID"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userNumber">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id = "@+id/userId"
-                android:layout_width="250dp"
-                android:layout_margin="20dp"
+                android:layout_width="match_parent"
                 android:backgroundTint="@color/material_dynamic_neutral20"
                 android:layout_height="60dp"
-                android:hint = "아이디를 입력하세요" />
+                 />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <Button
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
             android:id = "@+id/checkId"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:backgroundTint="@color/material_dynamic_primary30"
             android:text = "중복확인"/>
-
 
     </LinearLayout>
 
@@ -104,16 +107,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:passwordToggleEnabled="true"
+            android:hint = "비밀번호를 입력하세요"
+            android:layout_margin="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userIdLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id = "@+id/userPw"
                 android:layout_width="match_parent"
-                android:layout_margin="20dp"
                 android:backgroundTint="@color/material_dynamic_neutral20"
                 android:layout_height="60dp"
-                android:hint = "비밀번호를 입력하세요" />
+                 />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,13 +126,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:passwordToggleEnabled="true"
+            android:layout_margin="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userIdLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id = "@+id/userPwRe"
                 android:layout_width="match_parent"
-                android:layout_margin="20dp"
                 android:backgroundTint="@color/material_dynamic_neutral20"
                 android:layout_height="60dp"
                 android:hint = "비밀번호를 다시 입력하세요" />

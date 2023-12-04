@@ -41,18 +41,18 @@ class JoinActivity : AppCompatActivity() {
 
         supportActionBar?.setTitle(" ")
 
-        //late init 변수에 값 할당
-        name = binding.userName.text.toString()
-
-        number = binding.userNumber.text.toString()
-
-        id = binding.userId.text.toString()
-
-        password = binding.userPw.text.toString()
-
         gender = ""
 
         binding.joinBtn.setOnClickListener {
+
+
+            name = binding.userName.text.toString()
+
+            number = binding.userNumber.text.toString()
+
+            id = binding.userId.text.toString()
+
+            password = binding.userPw.text.toString()
 
             val joinThread = Runnable {
 
@@ -64,14 +64,7 @@ class JoinActivity : AppCompatActivity() {
 
             thread.start()
 
-
         }
-
-
-
-
-
-
 
 
     }
@@ -79,11 +72,7 @@ class JoinActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-
-                val intent = Intent(this,LoginActivity::class.java)
-
-                startActivity(intent)
-
+                finish()
                 return true
 
             }

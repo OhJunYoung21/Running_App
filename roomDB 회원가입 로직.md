@@ -65,6 +65,10 @@ MainThread는 여러가지 작업을 동시에 실행해야 하기 때문에 다
 
 Android Studio는 App inspection으로 데이터 테이블을 조회할 수 있다.
 
+<img width="1506" alt="스크린샷 2023-12-04 오후 4 31 11" src="https://github.com/OhJunYoung21/Running_App/assets/81908471/23578f68-f850-46a7-9327-7c13a89bfae0">
+
+
+
 
 
 

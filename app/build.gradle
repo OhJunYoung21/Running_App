@@ -18,7 +18,7 @@ android {
     defaultConfig {
         applicationId "com.test.running_beta"
         minSdk 31
-        targetSdk 34
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 

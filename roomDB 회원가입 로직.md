@@ -61,6 +61,12 @@ MainThread는 여러가지 작업을 동시에 실행해야 하기 때문에 다
 
 그렇기 때문에 우리는 비동기 방식을 사용해서 데이터베이스에 접근을 시도한다.
 
+# App Inspection으로 데이터 잘 들어갔는지 확인하기
+
+Android Studio는 App inspection으로 데이터 테이블을 조회할 수 있다.
+
+
+
 
 
 

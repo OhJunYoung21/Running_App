@@ -15,3 +15,6 @@
 [3.RoomDB 로직 구현](https://github.com/OhJunYoung21/Running_App/blob/main/roomDB%20회원가입%20로직.md)
 
 
+[4.로그인 성공/예외처리](https://github.com/OhJunYoung21/Running_App/blob/main/로그인%20예외%20처리.md)
+
+

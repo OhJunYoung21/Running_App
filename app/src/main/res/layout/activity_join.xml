@@ -169,7 +169,7 @@
         <Button
             android:id = "@+id/joinBtn"
             android:stateListAnimator="@null"
-            android:elevation="20dp"
+            android:elevation="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

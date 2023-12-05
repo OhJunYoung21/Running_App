@@ -1,5 +1,6 @@
 package com.test.running_beta
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Paint.Join
 import androidx.appcompat.app.AppCompatActivity
@@ -11,12 +12,12 @@ import com.test.running_beta.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding:ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
 
-    private lateinit var db:AppDatabase
+    private lateinit var db: AppDatabase
 
-    private lateinit var id:String
-    private lateinit var password:String
+    private lateinit var id: String
+    private lateinit var password: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.join.setOnClickListener {
 
-            val intent:Intent = Intent(this,JoinActivity::class.java)
+            val intent: Intent = Intent(this, JoinActivity::class.java)
 
             startActivity(intent)
 
@@ -43,20 +44,30 @@ class LoginActivity : AppCompatActivity() {
 
                 db = AppDatabase.getInstance(this)
 
-                if(db.getUserDAO().getIdList().contains(id)){
-                    //로그인이 성공했을 경우
-                    if(db.getUserDAO().getPasswordByEmail(id) == password){
-                        runOnUiThread{Toast.makeText(this,"로그인 되었습니다.",Toast.LENGTH_SHORT).show()}
+                if (db.getUserDAO().getIdList().contains(id)) {
+                    //login 이 성공 했을 경우,SharedPreference 객체에 상태와 id,password 저장
+                    if (db.getUserDAO().getPasswordByEmail(id) == password) {
+                        runOnUiThread {
+                            Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+
+                            saveLoginStatus(true)
+                            saveLoggedInId(id)
+                        }
+
                     }
-                    //비밀번호 예외 처리
+                    //password 예외 처리
                     else {
-                        runOnUiThread{Toast.makeText(this,"비밀번호를 다시 입력하세요.",Toast.LENGTH_SHORT).show()}
+                        runOnUiThread {
+                            Toast.makeText(this, "비밀번호를 다시 입력하세요.", Toast.LENGTH_SHORT).show()
+                        }
                     }
 
                 }
-                //아이디 입력 오류 예외처리
-                else{
-                    runOnUiThread{Toast.makeText(this,"존재하지 않는 아이디입니다.",Toast.LENGTH_SHORT).show()}
+                //아이디 입력 오류 예외 처리
+                else {
+                    runOnUiThread {
+                        Toast.makeText(this, "존재하지 않는 아이디입니다.", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
             }
@@ -68,9 +79,21 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-
-
-
-
     }
+
+    fun saveLoginStatus(loggedIn: Boolean) {
+        val preference = this.getSharedPreferences("login_pref", Context.MODE_PRIVATE)
+        val editor = preference.edit()
+        editor.putBoolean("isLoggedIn", loggedIn)
+        editor.apply()
+    }
+
+    fun saveLoggedInId(userId: String) {
+        val sharedPreferences = this.getSharedPreferences("login_pref", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("loggedInUserId", userId)
+        editor.apply()
+    }
+
+
 }

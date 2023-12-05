@@ -44,13 +44,19 @@ class LoginActivity : AppCompatActivity() {
                 db = AppDatabase.getInstance(this)
 
                 if(db.getUserDAO().getIdList().contains(id)){
-
+                    //로그인이 성공했을 경우
                     if(db.getUserDAO().getPasswordByEmail(id) == password){
-
                         runOnUiThread{Toast.makeText(this,"로그인 되었습니다.",Toast.LENGTH_SHORT).show()}
-
+                    }
+                    //비밀번호 예외 처리
+                    else {
+                        runOnUiThread{Toast.makeText(this,"비밀번호를 다시 입력하세요.",Toast.LENGTH_SHORT).show()}
                     }
 
+                }
+                //아이디 입력 오류 예외처리
+                else{
+                    runOnUiThread{Toast.makeText(this,"존재하지 않는 아이디입니다.",Toast.LENGTH_SHORT).show()}
                 }
 
             }

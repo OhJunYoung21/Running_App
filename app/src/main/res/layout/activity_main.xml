@@ -3,9 +3,100 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayoutCompat"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/material_dynamic_primary90">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/material_dynamic_primary90"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
 
 
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id = "@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src = "@drawable/run"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf = "@id/appBar"/>
+
+
+    <Button
+        android:text= "실내 달리기"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/material_dynamic_neutral10"
+        android:id = "@+id/insideRunning"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#ACCA89"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/logo"/>
+
+    <Button
+        android:text= "실외 달리기"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/material_dynamic_neutral10"
+        android:id = "@+id/outsideRunning"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#ACCA89"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/insideRunning"/>
+
+    <Button
+        android:text= "사이클"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/material_dynamic_neutral10"
+        android:id = "@+id/cycle"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#ACCA89"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/outsideRunning"/>
+
+
+    <Button
+        android:text= "나의 기록일지"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/material_dynamic_neutral10"
+        android:id = "@+id/record"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#ACCA89"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cycle"/>
+
+    <Button
+        android:text= "로그아웃"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/material_dynamic_neutral10"
+        android:backgroundTint="#ACCA89"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id = "@+id/logout"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

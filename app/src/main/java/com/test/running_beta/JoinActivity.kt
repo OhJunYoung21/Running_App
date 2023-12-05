@@ -60,11 +60,16 @@ class JoinActivity : AppCompatActivity() {
 
             }
 
+            runOnUiThread { Toast.makeText(this,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show() }
+
             val thread = Thread(joinThread)
 
             thread.start()
 
+            finish()
+
         }
+
 
 
     }

@@ -21,3 +21,6 @@
 [5.Gson 활용 데이터 저장](https://github.com/OhJunYoung21/Running_App/blob/main/커스텀%20클래스%20roomDB저장.md)
 
 
+[6.지도 API 활용](https://github.com/OhJunYoung21/Running_App/blob/main/실시간%20사용자%20위치%20추적%20API.md)
+
+

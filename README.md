@@ -18,6 +18,6 @@
 [4.로그인 성공/예외처리](https://github.com/OhJunYoung21/Running_App/blob/main/로그인%20예외%20처리.md)
 
 
-[5.gson 활용 데이터 저장](https://github.com/OhJunYoung21/Running_App/blob/main/커스텀%20클래스%20roomDB저장.md)
+[5.Gson 활용 데이터 저장](https://github.com/OhJunYoung21/Running_App/blob/main/커스텀%20클래스%20roomDB저장.md)
 
 

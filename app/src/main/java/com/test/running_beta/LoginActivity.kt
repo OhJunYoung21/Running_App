@@ -52,6 +52,11 @@ class LoginActivity : AppCompatActivity() {
 
                             saveLoginStatus(true)
                             saveLoggedInId(id)
+
+                            val intent = Intent(this,MainActivity::class.java)
+                            startActivity(intent)
+
+                            finish()
                         }
 
                     }
@@ -61,7 +66,6 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(this, "비밀번호를 다시 입력하세요.", Toast.LENGTH_SHORT).show()
                         }
                     }
-
                 }
                 //아이디 입력 오류 예외 처리
                 else {

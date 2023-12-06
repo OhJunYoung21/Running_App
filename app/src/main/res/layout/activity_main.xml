@@ -43,7 +43,6 @@
         app:layout_constraintLeft_toLeftOf="parent">
 
         <Button
-            android:stateListAnimator="@null"
             android:elevation="10dp"
             android:text= "실내 달리기"
             android:textSize="20sp"
@@ -57,7 +56,6 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:stateListAnimator="@null"
             android:elevation="10dp"
             android:text= "실외 달리기"
             android:textSize="20sp"
@@ -71,7 +69,6 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:stateListAnimator="@null"
             android:elevation="10dp"
             android:text= "사이클"
             android:textSize="20sp"
@@ -86,7 +83,6 @@
 
 
         <Button
-            android:stateListAnimator="@null"
             android:elevation="10dp"
             android:text= "나의 기록일지"
             android:textSize="20sp"
@@ -102,7 +98,6 @@
 
         <Button
             android:layout_marginBottom="30dp"
-            android:stateListAnimator="@null"
             android:elevation="10dp"
             android:text= "로그아웃"
             android:textSize="20sp"

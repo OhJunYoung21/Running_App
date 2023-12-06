@@ -18,7 +18,7 @@ abstract class AppDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java,
-                "favorite-books"
+                "user-Info"
             ).build()
 
         fun getInstance(context: Context): AppDatabase =

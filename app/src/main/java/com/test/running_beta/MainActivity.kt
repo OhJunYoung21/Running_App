@@ -8,6 +8,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.test.running_beta.databinding.ActivityMainBinding
+import kotlin.math.log
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,9 +17,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
 
         //로그인 된 상태가 아니라면 로그인 화면으로 이동
         if (!isLoggedIn()) {
@@ -27,10 +31,26 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
-
+        //로그 아웃 버튼 클릭 시 이동
         binding.logout.setOnClickListener {
 
-            Toast.makeText(this,"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show()
+            logOut()
+
+            val intent = Intent(this, LoginActivity::class.java)
+
+            startActivity(intent)
+
+            finish()
+
+            Toast.makeText(this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+
+        }
+
+
+        binding.insideRunning.setOnClickListener {
+
+            val intent = Intent(this, InsideActivity::class.java)
+            startActivity(intent)
 
         }
     }

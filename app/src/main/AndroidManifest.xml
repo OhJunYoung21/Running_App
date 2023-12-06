@@ -16,13 +16,14 @@
         android:theme="@style/Theme.Running_Beta"
         tools:targetApi="31">
         <activity
+            android:name=".InsideActivity"
+            android:exported="false" />
+        <activity
             android:name=".JoinActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true"/>
-
-
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -33,8 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

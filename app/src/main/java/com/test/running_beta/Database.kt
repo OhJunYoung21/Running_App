@@ -4,8 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 
 @Database(entities = [UserEntity::class], version = 1, exportSchema = false)
+
+@TypeConverters(RecordsConverter::class)
+
 abstract class AppDatabase : RoomDatabase() {
     //UserDAO객체를 얻어온다.
     abstract fun getUserDAO(): UserDAO

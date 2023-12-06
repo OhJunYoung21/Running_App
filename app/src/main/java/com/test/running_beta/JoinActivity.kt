@@ -15,12 +15,12 @@ import kotlinx.coroutines.withContext
 class JoinActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityJoinBinding
-    lateinit var name:String
-    lateinit var number:String
+    lateinit var name: String
+    lateinit var number: String
     lateinit var id: String
     lateinit var password: String
 
-    lateinit var gender :String
+    lateinit var gender: String
 
     lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,11 +56,20 @@ class JoinActivity : AppCompatActivity() {
 
             val joinThread = Runnable {
 
-                db.getUserDAO().insertUser(UserEntity(name=name, phoneNumber = number,id = id, password = password,gender = ""))
+                db.getUserDAO().insertUser(
+                    UserEntity(
+                        name = name,
+                        phoneNumber = number,
+                        id = id,
+                        password = password,
+                        gender = "",
+                        record = Records(0L, 0L, 0L,0L)
+                    )
+                )
 
             }
 
-            runOnUiThread { Toast.makeText(this,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show() }
+            runOnUiThread { Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show() }
 
             val thread = Thread(joinThread)
 
@@ -69,7 +78,6 @@ class JoinActivity : AppCompatActivity() {
             finish()
 
         }
-
 
 
     }
@@ -81,6 +89,7 @@ class JoinActivity : AppCompatActivity() {
                 return true
 
             }
+
             else -> {}
         }
         return super.onOptionsItemSelected(item)

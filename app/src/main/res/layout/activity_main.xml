@@ -42,26 +42,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">
 
-        <Button
-            android:elevation="10dp"
-            android:text= "실내 달리기"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/material_dynamic_neutral10"
-            android:id = "@+id/insideRunning"
-            android:layout_marginTop="100dp"
-            android:backgroundTint="#ACCA89"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <Button
             android:elevation="10dp"
-            android:text= "실외 달리기"
+            android:text= "달리기"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/material_dynamic_neutral10"
-            android:id = "@+id/outsideRunning"
+            android:id = "@+id/Running"
             android:layout_marginTop="100dp"
             android:backgroundTint="#ACCA89"
             android:layout_margin="10dp"

@@ -43,6 +43,10 @@ android {
 
 dependencies {
 
+    implementation "com.naver.maps:map-sdk:3.17.0"
+
+    implementation "com.google.code.gson:gson:2.8.6"
+
     implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation 'androidx.core:core-splashscreen:1.0.0-beta01'
     implementation 'androidx.core:core-ktx:1.12.0'

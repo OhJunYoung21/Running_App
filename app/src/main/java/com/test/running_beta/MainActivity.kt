@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        binding.insideRunning.setOnClickListener {
+        binding.Running.setOnClickListener {
 
             val intent = Intent(this, InsideActivity::class.java)
             startActivity(intent)

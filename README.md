@@ -9,7 +9,7 @@
 [1.Splash 화면 구성](https://github.com/OhJunYoung21/Running_App/blob/main/스플래시화면.md)
 
 
-[2.RoomDB 로그인 구현](https://github.com/OhJunYoung21/Running_App/edit/main/%5BRoomDB%5D로그인.md)
+[2.RoomDB 로그인 구현](https://github.com/OhJunYoung21/Running_App/blob/main/RoomDB%20로그인.md)
 
 
 [3.RoomDB 로직 구현](https://github.com/OhJunYoung21/Running_App/blob/main/roomDB%20회원가입%20로직.md)

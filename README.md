@@ -24,3 +24,5 @@
 [6.지도 API 활용](https://github.com/OhJunYoung21/Running_App/blob/main/실시간%20사용자%20위치%20추적%20API.md)
 
 
+[7.Naver API 활용 현위치 보여주기](https://github.com/OhJunYoung21/Running_App/blob/main/Naver%20API%20활용.md)
+

@@ -20,6 +20,7 @@ Framelayout을 사용해서 네이버 지도를 액티비티에 띄우는 데까
 
 
 <div>아래 화면은 네이버 지도를 띄운 액티비티이다.</div>
+<img width="320" alt="스크린샷 2023-12-07 오후 3 10 28" src="https://github.com/OhJunYoung21/Running_App/assets/81908471/4f46d165-81ec-40b1-8759-fdcf2b796bab">
 
 
 

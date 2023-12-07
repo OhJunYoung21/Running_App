@@ -3,16 +3,28 @@ package com.test.running_beta
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.UiThread
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationServices
+import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.CameraPosition
 import com.naver.maps.map.MapFragment
+import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.test.running_beta.databinding.ActivityInsideBinding
 
-class InsideActivity : AppCompatActivity(), OnMapReadyCallback {
+class InsideActivity : AppCompatActivity(),OnMapReadyCallback {
+
+    private lateinit var naverMap: NaverMap
 
     private lateinit var binding: ActivityInsideBinding
+
+    private lateinit var mapview:MapView
+
 
     var permissions = arrayOf(
         android.Manifest.permission.ACCESS_FINE_LOCATION,
@@ -23,42 +35,23 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         binding = ActivityInsideBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
-        if (isPermitted()) {
-            finish()
-        } else {
-            ActivityCompat.requestPermissions(this, permissions, 523)
-        }//권한 확인
-
-
+        mapview = binding.mapView
+        mapview.onCreate(savedInstanceState)
+        mapview.getMapAsync(this)
+        
     }
 
-    //권한 승인이 이뤄졌는지를 확인하는 코드
-    private fun isPermitted(): Boolean {
+    override fun onMapReady(naverMap: NaverMap) {
 
-        for (p in permissions) {
-            if (ContextCompat.checkSelfPermission(this, p) != PackageManager.PERMISSION_GRANTED) {
+        this.naverMap = naverMap
 
-                return false
-            }
-        }
-        return false
+        var camPos = CameraPosition(
+            LatLng(34.38, 128.55),
+            9.0
+        )
+        naverMap.cameraPosition = camPos
     }
 
-
-    //지도 프로세스를 시작하는 코드
-    fun startProcess(){
-        val fm = supportFragmentManager
-        val mapFragment = binding.mapFragment as MapFragment?
-            ?: MapFragment.newInstance().also {
-                fm.beginTransaction().add(R.id.map_fragment,it).commit()
-            } //권한
-        mapFragment.getMapAsync(this)
-    } //권한이 있다면 onMapReady연결
-
-    override fun onMapReady(p0: NaverMap) {
-        TODO("Not yet implemented")
-    }
 }

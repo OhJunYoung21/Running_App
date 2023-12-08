@@ -48,6 +48,8 @@ mapView.getMapAsync(this)는 지도 뷰가 비동기적으로 로딩되는 작�
 앱이 정지된 것처럼 보이거나, 비정상적으로 작동하는 것처럼 보여서 사용자에게 좋지 않다.(UX가 좋지 않다) 😂
 
 
+## FusedLocationProviderClient를 사용해서 현재 위치 저장하기😀
+
 
 
 

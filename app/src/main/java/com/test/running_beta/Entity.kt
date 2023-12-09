@@ -22,9 +22,7 @@ data class UserEntity(
     @ColumnInfo
     val password: String,
     @ColumnInfo
-    val gender: String,
-    @ColumnInfo
-    val record: Records
+    val gender: String
 
 )
 

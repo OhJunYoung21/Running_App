@@ -1,13 +1,13 @@
 package com.test.running_beta
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.room.Database
+import androidx.annotation.UiThread
+import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.common.internal.Objects.ToStringHelper
 import com.test.running_beta.databinding.ActivityJoinBinding
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -43,6 +43,27 @@ class JoinActivity : AppCompatActivity() {
 
         gender = ""
 
+        binding.checkId.setOnClickListener {
+
+            id = binding.userId.text.toString()
+
+            lifecycleScope.launch{
+
+                val idExist = checkId(id)
+
+                if(idExist){
+                    withContext(Dispatchers.Main){
+
+                        Toast.makeText(this@JoinActivity,"아이디가 이미 존재합니다.",Toast.LENGTH_SHORT).show()
+
+                    }
+
+                }
+
+            }
+
+        }
+
         binding.joinBtn.setOnClickListener {
 
 
@@ -62,8 +83,7 @@ class JoinActivity : AppCompatActivity() {
                         phoneNumber = number,
                         id = id,
                         password = password,
-                        gender = "",
-                        record = Records(0L, 0L, 0L,0L)
+                        gender = ""
                     )
                 )
 
@@ -87,11 +107,23 @@ class JoinActivity : AppCompatActivity() {
             android.R.id.home -> {
                 finish()
                 return true
-
             }
 
             else -> {}
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+    suspend fun checkId(id:String):Boolean {
+
+        return withContext(Dispatchers.IO){
+
+            db.getUserDAO().getIdList().contains(id)
+
+        }
+
+    }
+
+
 }

@@ -15,12 +15,17 @@ import kotlinx.coroutines.withContext
 class JoinActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityJoinBinding
+
     lateinit var name: String
     lateinit var number: String
     lateinit var id: String
     lateinit var password: String
-
+    lateinit var passwordRe: String
     lateinit var gender: String
+
+    lateinit var list: ArrayList<String>
+
+    lateinit var User:UserEntity
 
     lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,29 +48,33 @@ class JoinActivity : AppCompatActivity() {
 
         gender = ""
 
+        list = ArrayList<String>()
+
         binding.checkId.setOnClickListener {
 
             id = binding.userId.text.toString()
 
-            lifecycleScope.launch{
+            lifecycleScope.launch {
 
                 val idExist = checkId(id)
 
-                if(idExist){
-                    withContext(Dispatchers.Main){
-
-                        Toast.makeText(this@JoinActivity,"아이디가 이미 존재합니다.",Toast.LENGTH_SHORT).show()
-
+                if (idExist) {
+                    withContext(Dispatchers.Main) {
+                        binding.userId.text = null
+                        Toast.makeText(this@JoinActivity, "아이디가 이미 존재합니다.", Toast.LENGTH_SHORT)
+                            .show()
                     }
+                } else {
+
+                    list.add(id)
 
                 }
-
             }
-
         }
 
-        binding.joinBtn.setOnClickListener {
 
+        //회원가입 기능 구현
+        binding.joinBtn.setOnClickListener {
 
             name = binding.userName.text.toString()
 
@@ -75,30 +84,51 @@ class JoinActivity : AppCompatActivity() {
 
             password = binding.userPw.text.toString()
 
-            val joinThread = Runnable {
+            passwordRe = binding.userPwRe.text.toString()
 
-                db.getUserDAO().insertUser(
-                    UserEntity(
-                        name = name,
-                        phoneNumber = number,
-                        id = id,
-                        password = password,
-                        gender = ""
-                    )
-                )
+            gender = ""
+
+            list.add(name)
+            list.add(number)
+
+            //입력한 password 가 서로 다른 경우, 여기 까지 정상 작동 이라면 list 에는 4가지 요소가 있을 것.
+
+            if(checkPw(password,passwordRe)){
+                list.add(password)
+            }
+
+            if(binding.genderMale.isChecked){
+
+                gender = "male"
+                list.add(gender)
+
+            }else if(binding.genderFemale.isChecked){
+
+                gender = "female"
+                list.add(gender)
 
             }
 
-            runOnUiThread { Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show() }
+            if(list.size == 5){
 
-            val thread = Thread(joinThread)
+                lifecycleScope.launch{
 
-            thread.start()
+                    withContext(Dispatchers.IO){
 
-            finish()
+                        User = UserEntity(name = name, phoneNumber = number,id = id, password = password, gender = gender)
+
+                        db.getUserDAO().insertUser(User)
+
+                        runOnUiThread { Toast.makeText(this@JoinActivity,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show() }
+
+                    }
+
+                }
+
+            }
+
 
         }
-
 
     }
 
@@ -115,13 +145,19 @@ class JoinActivity : AppCompatActivity() {
     }
 
 
-    suspend fun checkId(id:String):Boolean {
+    suspend fun checkId(id: String): Boolean {
 
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
 
             db.getUserDAO().getIdList().contains(id)
 
         }
+
+    }
+
+    fun checkPw(pw1: String, pw2: String): Boolean {
+
+        return (pw1 == pw2)
 
     }
 

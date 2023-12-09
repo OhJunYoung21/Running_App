@@ -1,5 +1,6 @@
 package com.test.running_beta
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -25,7 +26,7 @@ class JoinActivity : AppCompatActivity() {
 
     lateinit var list: ArrayList<String>
 
-    lateinit var User:UserEntity
+    lateinit var User: UserEntity
 
     lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +67,8 @@ class JoinActivity : AppCompatActivity() {
                     }
                 } else {
 
+                    Toast.makeText(this@JoinActivity, "사용가능한 아이디 입니다.", Toast.LENGTH_SHORT).show()
+
                     list.add(id)
 
                 }
@@ -93,41 +96,56 @@ class JoinActivity : AppCompatActivity() {
 
             //입력한 password 가 서로 다른 경우, 여기 까지 정상 작동 이라면 list 에는 4가지 요소가 있을 것.
 
-            if(checkPw(password,passwordRe)){
+            if (checkPw(password, passwordRe)) {
                 list.add(password)
             }
 
-            if(binding.genderMale.isChecked){
+            if (binding.genderMale.isChecked) {
 
                 gender = "male"
                 list.add(gender)
 
-            }else if(binding.genderFemale.isChecked){
+            } else if (binding.genderFemale.isChecked) {
 
                 gender = "female"
                 list.add(gender)
 
             }
 
-            if(list.size == 5){
+            if (list.size == 5) {
 
-                lifecycleScope.launch{
+                lifecycleScope.launch {
 
-                    withContext(Dispatchers.IO){
+                    withContext(Dispatchers.IO) {
 
-                        User = UserEntity(name = name, phoneNumber = number,id = id, password = password, gender = gender)
+                        User = UserEntity(
+                            name = name,
+                            phoneNumber = number,
+                            id = id,
+                            password = password,
+                            gender = gender
+                        )
 
                         db.getUserDAO().insertUser(User)
 
-                        runOnUiThread { Toast.makeText(this@JoinActivity,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show() }
+                        runOnUiThread {
+                            Toast.makeText(
+                                this@JoinActivity, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
                     }
-
                 }
 
+                val intent = Intent(this, LoginActivity::class.java)
+
+                startActivity(intent)
+
+            } else {
+
+                Toast.makeText(this, "입력하지 않은 것들이 있습니다.\n다시 입력하세요", Toast.LENGTH_SHORT).show()
+
             }
-
-
         }
 
     }

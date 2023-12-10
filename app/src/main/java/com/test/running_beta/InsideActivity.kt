@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
+import android.view.View
 import androidx.annotation.UiThread
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -28,6 +29,7 @@ import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
 import com.test.running_beta.databinding.ActivityInsideBinding
 import java.util.Timer
+import kotlin.concurrent.timer
 
 class InsideActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -72,6 +74,25 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback {
             requestLocationPermissions()
         }
 
+        binding.play.setOnClickListener {
+
+            startTimer()
+            binding.play.visibility = View.GONE
+            binding.pause.visibility = View.VISIBLE
+
+        }
+
+        binding.pause.setOnClickListener {
+
+            pauseTimer()
+
+            binding.play.visibility = View.VISIBLE
+            binding.pause.visibility = View.GONE
+
+
+        }
+
+
     }
 
     @SuppressLint("MissingPermission")
@@ -111,6 +132,30 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback {
     //현재 위치를 요청한다.
     private fun requestLocationPermissions() {
         ActivityCompat.requestPermissions(this, permissions, 123)
+    }
+
+    private fun startTimer() {
+
+        timer(period = 10) {
+            time++
+
+            val sec = time / 100
+            val milli = time % 100
+
+            runOnUiThread {
+
+                binding.sec.text = "${sec}:${milli}"
+
+            }
+        }
+
+    }
+
+
+    private fun pauseTimer(){
+
+        timer?.cancel()
+
     }
 
 

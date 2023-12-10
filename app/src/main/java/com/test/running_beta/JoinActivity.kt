@@ -51,6 +51,8 @@ class JoinActivity : AppCompatActivity() {
 
         list = ArrayList<String>()
 
+        //아이디 유효성 검사
+
         binding.checkId.setOnClickListener {
 
             id = binding.userId.text.toString()
@@ -77,6 +79,7 @@ class JoinActivity : AppCompatActivity() {
 
 
         //회원가입 기능 구현
+
         binding.joinBtn.setOnClickListener {
 
             name = binding.userName.text.toString()
@@ -111,6 +114,8 @@ class JoinActivity : AppCompatActivity() {
                 list.add(gender)
 
             }
+
+            //모든 요소들이 정상입력되었는지 확인하고, 입력되었다면 if문안의 명령문 실행, 아니라면 else문 안의 명령문 실행
 
             if (list.size == 5) {
 
@@ -147,7 +152,6 @@ class JoinActivity : AppCompatActivity() {
 
             }
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

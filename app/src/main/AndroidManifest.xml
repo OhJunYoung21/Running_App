@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Running_Beta"
         tools:targetApi="31">
+
         <activity
             android:name=".SearchId_Activity"
             android:exported="false"
@@ -39,14 +40,16 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.running.Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"/>
+            <activity android:name=".introActivity"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+
+            </activity>
     </application>
 
 </manifest>

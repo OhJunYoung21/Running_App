@@ -5,9 +5,6 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 
 
-
-
-
 class RecordsConverter {
 
     //gson library 를 소환

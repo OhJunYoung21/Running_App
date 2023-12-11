@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Running_Beta</string>
+    <string name="title_activity_search_id">SearchId_Activity</string>
 </resources>

@@ -54,12 +54,11 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
+            <Chronometer
                 android:id="@+id/sec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="00:00"
                 android:textSize="40sp"
                 android:textStyle="italic" />
 

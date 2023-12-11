@@ -35,7 +35,7 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickList
 
     private var time = 0
 
-    private var timer: Timer? = null
+    private lateinit var timer: Timer
 
     private var isRunning: Boolean = false
 
@@ -85,13 +85,14 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickList
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.play -> {
+                //현재 Timer 가 작동 중 이라면
                 if (isRunning) {
                     pauseTimer()
+                    //현재 Timer 가 작동 중이 아니라면
                 } else {
                     startTimer()
                 }
             }
-
         }
     }
 
@@ -136,18 +137,7 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickList
 
     private fun startTimer() {
 
-        timer(period = 10) {
-            time++
-
-            val sec = time / 100
-            val milli = time % 100
-
-            runOnUiThread {
-
-                binding.sec.text = "${sec}:${milli}"
-
-            }
-        }
+        binding.sec.start()
 
         isRunning = true
 
@@ -157,12 +147,12 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickList
 
     private fun pauseTimer() {
 
+        binding.sec.stop()
 
         isRunning = false
 
         binding.play.setImageResource(R.drawable.play)
 
-        timer?.cancel()
 
 
     }

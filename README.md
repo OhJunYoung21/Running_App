@@ -32,5 +32,6 @@
 
 ## 🧑‍💻멘토님 피드백 반영 수정사항🧑‍💻
 
-[1.Splash는 introActivity로 구현]()
+
+[1.Splash는 introActivity로 구현]
 

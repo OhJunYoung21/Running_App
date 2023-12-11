@@ -30,8 +30,7 @@
 
 [9.스톱워치 기능 구현](https://github.com/OhJunYoung21/Running_App/blob/main/스톱워치%20기능%20구현.md)
 
-## 🧑‍💻멘토님 피드백 반영 수정사항🧑‍💻
+## 🧑‍💻피드백 반영 수정사항🧑‍💻
 
-
-[1.Splash는 introActivity로 구현]
+[🔖피드백 반영 노션🔖](https://www.notion.so/48a708a782a44f72a8710a32ac0ac8a9?v=466a6049840a490990657b933c56fd63)
 

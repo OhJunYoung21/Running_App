@@ -31,11 +31,13 @@ import com.test.running_beta.databinding.ActivityInsideBinding
 import java.util.Timer
 import kotlin.concurrent.timer
 
-class InsideActivity : AppCompatActivity(), OnMapReadyCallback {
+class InsideActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListener {
 
     private var time = 0
 
-    private lateinit var timer: Timer
+    private var timer: Timer? = null
+
+    private var isRunning: Boolean = false
 
     private lateinit var naverMap: NaverMap
 
@@ -63,6 +65,9 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityInsideBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.play.setOnClickListener(this)
+
+
         mapview = binding.mapView
 
         // 위치 권한이 승인된 경우, if 문 안의 명령문 수행
@@ -74,25 +79,20 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback {
             requestLocationPermissions()
         }
 
-        binding.play.setOnClickListener {
 
-            startTimer()
-            binding.play.visibility = View.GONE
-            binding.pause.visibility = View.VISIBLE
+    }
 
-        }
-
-        binding.pause.setOnClickListener {
-
-            pauseTimer()
-
-            binding.play.visibility = View.VISIBLE
-            binding.pause.visibility = View.GONE
-
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.play -> {
+                if (isRunning) {
+                    pauseTimer()
+                } else {
+                    startTimer()
+                }
+            }
 
         }
-
-
     }
 
     @SuppressLint("MissingPermission")
@@ -149,12 +149,21 @@ class InsideActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
+        isRunning = true
+
+        binding.play.setImageResource(R.drawable.pause)
+
     }
 
+    private fun pauseTimer() {
 
-    private fun pauseTimer(){
+
+        isRunning = false
+
+        binding.play.setImageResource(R.drawable.play)
 
         timer?.cancel()
+
 
     }
 

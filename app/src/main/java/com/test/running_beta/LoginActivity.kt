@@ -2,11 +2,14 @@ package com.test.running_beta
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Paint.Join
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.room.Database
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import com.test.running_beta.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -17,12 +20,29 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var id: String
     private lateinit var password: String
+
+    //EncryptedSharedPreference object Declared
+
+    private val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
+    private val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
+
+
+    private val sharedPreferences = EncryptedSharedPreferences.create(
+        "encryptedPref",
+        masterKeyAlias,
+        this,
+        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+    )
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
 
         binding.join.setOnClickListener {
 
@@ -52,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
                             saveLoginStatus(true)
                             saveLoggedInId(id)
 
-                            val intent = Intent(this,MainActivity::class.java)
+                            val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
 
                             finish()
@@ -85,14 +105,26 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun saveLoginStatus(loggedIn: Boolean) {
-        val preference = this.getSharedPreferences("login_pref", Context.MODE_PRIVATE)
-        val editor = preference.edit()
+
+        val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
+        val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
+
+
+        val sharedPreferences = EncryptedSharedPreferences.create(
+            "encryptedPref",
+            masterKeyAlias,
+            this,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
+        val editor = sharedPreferences.edit()
         editor.putBoolean("isLoggedIn", loggedIn)
         editor.apply()
     }
 
     fun saveLoggedInId(userId: String) {
-        val sharedPreferences = this.getSharedPreferences("login_pref", Context.MODE_PRIVATE)
+
+
         val editor = sharedPreferences.edit()
         editor.putString("loggedInUserId", userId)
         editor.apply()

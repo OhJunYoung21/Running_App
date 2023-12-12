@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import com.test.running_beta.databinding.ActivityMainBinding
 import kotlin.math.log
 
@@ -54,7 +56,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun isLoggedIn(): Boolean {
-        val preference = this.getSharedPreferences("login_pref", Context.MODE_PRIVATE)
+
+        val preference = this.getSharedPreferences("encryptedPref", Context.MODE_PRIVATE)
         //default 값 으로는 false 를 리턴 한다.
         return preference.getBoolean("isLoggedIn", false)
     }
@@ -67,14 +70,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun saveLoginStatus(loggedIn: Boolean) {
-        val preference = this.getSharedPreferences("login_pref", Context.MODE_PRIVATE)
+
+
+        val preference = this.getSharedPreferences("encryptedPref", Context.MODE_PRIVATE)
         val editor = preference.edit()
         editor.putBoolean("isLoggedIn", loggedIn)
         editor.apply()
     }
 
     fun saveLoggedInId(userId: String) {
-        val sharedPreferences = this.getSharedPreferences("login_pref", Context.MODE_PRIVATE)
+
+
+        val sharedPreferences = this.getSharedPreferences("encryptedPref", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("loggedInUserId", userId)
         editor.apply()

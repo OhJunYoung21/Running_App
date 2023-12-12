@@ -6,7 +6,6 @@ import android.graphics.Paint.Join
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.room.Database
 import com.test.running_beta.databinding.ActivityLoginBinding
 

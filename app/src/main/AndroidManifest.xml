@@ -8,6 +8,7 @@
 
     <dist:module dist:instant="true" />
 
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,13 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Running_Beta"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:name = ".ApplicationClass.MyApplication">
 
-        <activity
-            android:name=".SearchId_Activity"
-            android:exported="false"
-            android:label="@string/title_activity_search_id"
-            android:theme="@style/Theme.Running_Beta" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
@@ -51,5 +48,7 @@
 
             </activity>
     </application>
+
+
 
 </manifest>

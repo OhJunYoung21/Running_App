@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.room.Database
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.test.running_beta.ApplicationClass.MyApplication
 import com.test.running_beta.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -21,20 +22,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var id: String
     private lateinit var password: String
 
-    //EncryptedSharedPreference object Declared
-
-    private val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
-    private val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
-
-
-    private val sharedPreferences = EncryptedSharedPreferences.create(
-        "encryptedPref",
-        masterKeyAlias,
-        this,
-        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-    )
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
 
 
         binding.join.setOnClickListener {
@@ -64,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                 db = AppDatabase.getInstance(this)
 
                 if (db.getUserDAO().getIdList().contains(id)) {
-                    //login 이 성공 했을 경우,SharedPreference 객체에 상태와 id,password 저장
+                    //login 이 성공 했을 경우,EncryptedSharedPreference 객체에 상태와 id,password 저장
                     if (db.getUserDAO().getPasswordByEmail(id) == password) {
                         runOnUiThread {
                             Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
@@ -106,26 +94,21 @@ class LoginActivity : AppCompatActivity() {
 
     fun saveLoginStatus(loggedIn: Boolean) {
 
-        val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
-        val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
+        val myApplication = application as MyApplication
 
+        val sharedPreference = myApplication.sharedPreferences
 
-        val sharedPreferences = EncryptedSharedPreferences.create(
-            "encryptedPref",
-            masterKeyAlias,
-            this,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
-        val editor = sharedPreferences.edit()
+        val editor = sharedPreference.edit()
         editor.putBoolean("isLoggedIn", loggedIn)
         editor.apply()
     }
 
     fun saveLoggedInId(userId: String) {
+        val myApplication = application as MyApplication
 
+        val sharedPreference = myApplication.sharedPreferences
 
-        val editor = sharedPreferences.edit()
+        val editor = sharedPreference.edit()
         editor.putString("loggedInUserId", userId)
         editor.apply()
     }

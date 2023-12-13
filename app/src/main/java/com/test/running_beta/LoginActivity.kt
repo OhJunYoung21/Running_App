@@ -17,7 +17,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
-    private lateinit var db: AppDatabase
 
     private lateinit var id: String
     private lateinit var password: String
@@ -30,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-
+        val application = application as MyApplication
 
         binding.join.setOnClickListener {
 
@@ -49,16 +48,12 @@ class LoginActivity : AppCompatActivity() {
             //비동기화 처리를 위해 새로운 스레드를 사용한다.
             val loginThread = Runnable {
 
-                db = AppDatabase.getInstance(this)
-
-                if (db.getUserDAO().getIdList().contains(id)) {
+                if (application.db.getUserDAO().getIdList().contains(id)) {
                     //login 이 성공 했을 경우,EncryptedSharedPreference 객체에 상태와 id,password 저장
-                    if (db.getUserDAO().getPasswordByEmail(id) == password) {
-
-                        val myApplication = application as MyApplication
+                    if (application.db.getUserDAO().getPasswordByEmail(id) == password) {
 
                         runOnUiThread {
-                            myApplication.successLogin(id, this)
+                            application.successLogin(id, this)
                         }
 
                         val intent = Intent(this, MainActivity::class.java)
@@ -90,26 +85,6 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun saveLoginStatus(loggedIn: Boolean) {
-
-        val myApplication = application as MyApplication
-
-        val sharedPreference = myApplication.sharedPreferences
-
-        val editor = sharedPreference.edit()
-        editor.putBoolean("isLoggedIn", loggedIn)
-        editor.apply()
-    }
-
-    fun saveLoggedInId(userId: String) {
-        val myApplication = application as MyApplication
-
-        val sharedPreference = myApplication.sharedPreferences
-
-        val editor = sharedPreference.edit()
-        editor.putString("loggedInUserId", userId)
-        editor.apply()
-    }
 
 
 }

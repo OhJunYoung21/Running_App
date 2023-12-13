@@ -24,8 +24,6 @@ class MyApplication : Application() {
         //먼저 Application Class를 생성하고 그 다음 db를 호출한다.Context 오류를 막기 위해서이다.
         db = AppDatabase.getInstance(this)
 
-
-
         val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
         val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
 

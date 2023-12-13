@@ -9,9 +9,11 @@ import androidx.annotation.UiThread
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.common.internal.Objects.ToStringHelper
 import com.test.running_beta.databinding.ActivityJoinBinding
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.coroutineContext
 
 class JoinActivity : AppCompatActivity() {
 
@@ -62,7 +64,7 @@ class JoinActivity : AppCompatActivity() {
                 val idExist = checkId(id)
 
                 if (idExist) {
-                    withContext(Dispatchers.Main) {
+                    CoroutineScope(Dispatchers.Main).launch {
                         binding.userId.text = null
                         Toast.makeText(this@JoinActivity, "아이디가 이미 존재합니다.", Toast.LENGTH_SHORT)
                             .show()
@@ -71,7 +73,6 @@ class JoinActivity : AppCompatActivity() {
 
                     Toast.makeText(this@JoinActivity, "사용가능한 아이디 입니다.", Toast.LENGTH_SHORT).show()
 
-                    list.add(id)
 
                 }
             }
@@ -92,36 +93,58 @@ class JoinActivity : AppCompatActivity() {
 
             passwordRe = binding.userPwRe.text.toString()
 
-            gender = ""
-
-            list.add(name)
-            list.add(number)
-
-            //입력한 password 가 서로 다른 경우, 여기 까지 정상 작동 이라면 list 에는 4가지 요소가 있을 것.
-
-            if (checkPw(password, passwordRe)) {
-                list.add(password)
-            }
+            //성별이 잘 입력됬는지를 확인
 
             if (binding.genderMale.isChecked) {
 
                 gender = "male"
-                list.add(gender)
 
             } else if (binding.genderFemale.isChecked) {
 
                 gender = "female"
-                list.add(gender)
+
+            } else {
+
+                gender = ""
 
             }
 
-            //모든 요소들이 정상입력되었는지 확인하고, 입력되었다면 if문안의 명령문 실행, 아니라면 else문 안의 명령문 실행
+            if (binding.userId.text == null) {
 
-            if (list.size == 5) {
+                Toast.makeText(this, "아이디는 필수 입력사항입니다.", Toast.LENGTH_SHORT).show()
+
+            } else if (binding.userPw.text == null) {
+
+                Toast.makeText(this, "비밀번호는 필수 입력사항입니다.", Toast.LENGTH_SHORT).show()
+
+            } else if (binding.userPwRe.text == null) {
+
+                Toast.makeText(this, "비밀번호를 재확인하세요", Toast.LENGTH_SHORT).show()
+
+            } else if (password != passwordRe) {
+
+                Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+
+            } else if (name == "") {
+
+                Toast.makeText(this, "이름은 필수입력 사항입니다.", Toast.LENGTH_SHORT).show()
+
+            } else if (number == "") {
+
+                Toast.makeText(this, "번호는 필수 입력 사항입니다.", Toast.LENGTH_SHORT).show()
+
+            }else if(gender == ""){
+
+                Toast.makeText(this,"성별은 필수입력 사항입니다.",Toast.LENGTH_SHORT).show()
+
+            }
+
+
+            else {
 
                 lifecycleScope.launch {
 
-                    withContext(Dispatchers.IO) {
+                    CoroutineScope(Dispatchers.IO).launch {
 
                         User = UserEntity(
                             name = name,
@@ -146,11 +169,16 @@ class JoinActivity : AppCompatActivity() {
 
                 startActivity(intent)
 
-            } else {
-
-                Toast.makeText(this, "입력하지 않은 것들이 있습니다.\n다시 입력하세요", Toast.LENGTH_SHORT).show()
-
             }
+
+
+            //입력한 password 가 서로 다른 경우, 여기 까지 정상 작동 이라면 list 에는 4가지 요소가 있을 것.
+
+            /*else {
+
+               Toast.makeText(this, "입력하지 않은 것들이 있습니다.\n다시 입력하세요", Toast.LENGTH_SHORT).show()
+
+           }*/
         }
     }
 

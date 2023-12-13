@@ -54,17 +54,15 @@ class LoginActivity : AppCompatActivity() {
                 if (db.getUserDAO().getIdList().contains(id)) {
                     //login 이 성공 했을 경우,EncryptedSharedPreference 객체에 상태와 id,password 저장
                     if (db.getUserDAO().getPasswordByEmail(id) == password) {
+
+                        val myApplication = application as MyApplication
+
                         runOnUiThread {
-                            Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
-
-                            saveLoginStatus(true)
-                            saveLoggedInId(id)
-
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-
-                            finish()
+                            myApplication.successLogin(id, this)
                         }
+
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
 
                     }
                     //password 예외 처리

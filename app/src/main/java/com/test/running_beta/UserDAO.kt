@@ -12,9 +12,14 @@ interface UserDAO {
     @Query("SELECT password FROM userinfo WHERE id = :id")    // 전화번호에 따른 비밀번호 반환
     fun getPasswordByEmail(id: String): String
 
+    @Query("SELECT id FROM userinfo WHERE name = :name AND phoneNumber = :number")
+    fun getIdByName(name: String, number: String):String
+
     @Insert
     fun insertUser(userInfo: UserEntity)    // 회원 등록
 
     @Query("DELETE FROM userinfo WHERE id = :id AND password = :password")
     fun deleteUser(id: String, password: String)    // 회원 삭제
+
+
 }

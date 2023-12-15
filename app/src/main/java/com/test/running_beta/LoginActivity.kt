@@ -11,6 +11,7 @@ import androidx.room.Database
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.test.running_beta.ApplicationClass.MyApplication
+import com.test.running_beta.Search.SearchIdActivity
 import com.test.running_beta.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -83,8 +84,16 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-    }
+        //아이디 찾기 버튼으로 이동
 
+        binding.findId.setOnClickListener {
+
+            val intent = Intent(this, SearchIdActivity::class.java)
+            startActivity(intent)
+
+        }
+
+    }
 
 
 }

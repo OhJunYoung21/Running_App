@@ -32,7 +32,7 @@
 
 [10.Application Class](https://github.com/OhJunYoung21/Running_App/blob/main/어플리케이션%20클래스%20구현.md)
 
-[11.Query문 활용 아이디 찾기]()
+[11.Query문 활용 아이디 찾기](https://github.com/OhJunYoung21/Running_App/blob/main/Query문%20활용.md)
 
 ## 🧑‍💻피드백 반영 수정사항🧑‍💻
 

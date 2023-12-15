@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:hint = "전화번호를 입력하세요"
         android:id = "@+id/userNumber"
-        android:inputType="number"
+        android:inputType="phone"
         app:layout_constraintTop_toBottomOf="@id/userName"/>
 
     <LinearLayout
@@ -114,6 +114,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id = "@+id/userPw"
+                android:inputType="numberPassword"
                 android:layout_width="match_parent"
                 android:backgroundTint="@color/material_dynamic_neutral20"
                 android:layout_height="60dp"
@@ -133,6 +134,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id = "@+id/userPwRe"
                 android:layout_width="match_parent"
+                android:inputType="numberPassword"
                 android:backgroundTint="@color/material_dynamic_neutral20"
                 android:layout_height="60dp"
                 android:hint = "비밀번호를 다시 입력하세요" />

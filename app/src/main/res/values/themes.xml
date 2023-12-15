@@ -14,7 +14,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Running_Beta.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Running_Beta.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <item name="titleTextColor">@color/black</item>
+        <item name="homeAsUpIndicator">@drawable/baseline_arrow_back_24</item>
+
+    </style>
 
     <style name="Theme.Running_Beta.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 

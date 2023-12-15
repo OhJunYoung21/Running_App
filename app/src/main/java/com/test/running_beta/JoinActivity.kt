@@ -47,7 +47,7 @@ class JoinActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        supportActionBar?.setTitle(" ")
+        supportActionBar?.setTitle("회원가입")
 
         gender = ""
 

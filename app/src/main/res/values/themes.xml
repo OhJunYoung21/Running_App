@@ -9,5 +9,14 @@
 
     <style name="Theme.Running_Beta" parent="Base.Theme.Running_Beta" />
 
+    <style name="Theme.Running_Beta.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Running_Beta.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Running_Beta.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>

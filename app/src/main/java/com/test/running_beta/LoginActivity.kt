@@ -1,17 +1,11 @@
 package com.test.running_beta
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.graphics.Paint.Join
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.room.Database
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
+import androidx.appcompat.app.AppCompatActivity
 import com.test.running_beta.ApplicationClass.MyApplication
-import com.test.running_beta.Search.SearchIdActivity
+import com.test.running_beta.Search.SearchActivity
 import com.test.running_beta.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -88,7 +82,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.findId.setOnClickListener {
 
-            val intent = Intent(this, SearchIdActivity::class.java)
+            val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
 
         }

@@ -12,12 +12,12 @@ import kotlinx.coroutines.launch
 
 class SearchIdActivity : AppCompatActivity() {
 
-    lateinit var binding:ActivitySearchIdBinding
+    lateinit var binding: ActivitySearchIdBinding
 
-    lateinit var name:String
-    lateinit var number:String
+    lateinit var name: String
+    lateinit var number: String
 
-    lateinit var id:String
+    lateinit var id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +37,9 @@ class SearchIdActivity : AppCompatActivity() {
 
         binding.searchBtn.setOnClickListener {
 
-            name = binding.searchName.toString().trim()
+            name = binding.Name.text.toString().trim()
 
-            number = binding.searchNumber.toString().trim()
+            number = binding.Number.text.toString().trim()
 
             CoroutineScope(Dispatchers.IO).launch {
 
@@ -50,7 +50,7 @@ class SearchIdActivity : AppCompatActivity() {
                     Toast.makeText(this@SearchIdActivity,"회원님의 아이디는 ${id}입니다.",Toast.LENGTH_SHORT).show()
 
                 }
-4
+
             }
 
         }

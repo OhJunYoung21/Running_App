@@ -44,6 +44,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id = "@+id/Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint = "이름을 입력하세요" />
@@ -59,6 +60,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id= "@+id/Number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint = "번호를 입력하세요" />

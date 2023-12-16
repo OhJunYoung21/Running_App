@@ -3,43 +3,43 @@ package com.test.running_beta.Search
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.test.running_beta.Search.ui.main.SectionsPagerAdapter
 import com.test.running_beta.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
 
+    private val tabTitleArray = arrayOf("아이디 찾기", "비밀번호 찾기")
+
     private lateinit var binding: ActivitySearchBinding
 
+    private lateinit var TabLayout: TabLayout
+
+    // private lateinit var ViewPager2Adapter:ViewPager2Adapter
+
+    private lateinit var ViewPager2: ViewPager2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySearchBinding.inflate(layoutInflater)
 
-        setContentView(binding.root)
+        val view = binding.root
+
+        setContentView(view)
 
         setSupportActionBar(binding.toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        supportActionBar?.title = "회원가입"
+        supportActionBar?.setTitle("아이디/비밀번호 찾기")
+
+        TabLayout = binding.TabLayout
+
+        ViewPager2 = binding.pager
+
+        ViewPager2.adapter = ViewPager2Adapter(supportFragmentManager, lifecycle)
 
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = binding.tabs
-        tabs.setupWithViewPager(viewPager)
-
-        val fab: FloatingActionButton = binding.fab
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

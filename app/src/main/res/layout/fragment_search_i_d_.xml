@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/material_dynamic_primary90"
+    tools:context=".SearchFragments.SearchID_Fragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ImageView
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id = "@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src ="@drawable/run" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/searchName"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint = "이름을 입력하세요" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/searchNumber"
+            app:layout_constraintTop_toBottomOf="@id/searchName">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id= "@+id/Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint = "번호를 입력하세요" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id = "@+id/searchBtn"
+            android:backgroundTint="@color/cardview_shadow_start_color"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/searchNumber"
+            android:text = "아이디 찾기"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</FrameLayout>

@@ -4,30 +4,56 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.test.running_beta.R
+import com.test.running_beta.AppDatabase
+import com.test.running_beta.ApplicationClass.MyApplication
+import com.test.running_beta.databinding.FragmentSearchIDBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchID_Fragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchID_Fragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    lateinit var binding: FragmentSearchIDBinding
+
+    lateinit var name: String
+
+    lateinit var number: String
+
+    lateinit var application: MyApplication
+
+    lateinit var db:AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
+        binding = FragmentSearchIDBinding.inflate(layoutInflater)
+
+        binding.searchBtn.setOnClickListener {
+
+            name = binding.Name.text.toString().trim()
+
+            number = binding.Number.text.toString().trim()
+
+            CoroutineScope(Dispatchers.IO).launch {
+
+                val id = findId(name, number)
+
+                withContext(Dispatchers.Main){
+
+                    Toast.makeText(requireContext(), "아이디는 ${id}입니다.", Toast.LENGTH_SHORT).show()
+
+                }
+
+            }
+
+
         }
+
+
     }
 
     override fun onCreateView(
@@ -35,7 +61,19 @@ class SearchID_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_i_d_, container, false)
+
+
+        return binding.root
+    }
+
+    suspend fun findId(name: String, number: String): String {
+
+        db = AppDatabase.getInstance(requireContext())
+
+        val id = db.getUserDAO().getIdByName(name,number)
+
+        return id
+
     }
 
 }

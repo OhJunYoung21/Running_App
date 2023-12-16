@@ -5,11 +5,11 @@
 
 
 ### 🧑‍💻ViewPager2란?🧑‍💻
-
+-------
 ViewPager2는 ViewPager에 이어서 나온 버전으로, 프래그먼트간 전환동작을 사용할때 자주 사용되는 위젯이다. 안드로이드 개발에서 화면전환을 위해 사용되는 강력한 도구이며,Jetpack Library의 일부이다.
 
 ### 🧑‍💻ViewPager2Adapter🧑‍💻
-
+-------
 ~~~kotlin
 class ViewPager2Adapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -34,7 +34,7 @@ ViewPager2Adapter는 기본적으로 FragmentStateAdapter를 상속해서 만든
 
 
 ### 🧑‍💻TabLayout는 ViewPager2와 같이 사용한다.🧑‍💻
-
+-------
 ViewPager2는 홀로 쓰이는 경우보다 TabLayout과 같이 쓰인다. TabLayout은 사용자경험을 위해 어떤 프래그먼트를 보여줄 것인지 알려주는 메뉴판이라고 생각할 수 있다.
 
 TabLayout과 ViewPager2를 연결해줘야 하는데, 이때는 TabMediator를 사용한다.

@@ -51,9 +51,7 @@ class SearchPW_Fragment : Fragment() {
                             "비밀번호는 ${password}입니다.",
                             Toast.LENGTH_SHORT
                         ).show()
-
                     }
-
                 }
 
 

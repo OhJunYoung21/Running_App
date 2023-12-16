@@ -42,11 +42,27 @@ class SearchID_Fragment : Fragment() {
 
                 val id = findId(name, number)
 
-                withContext(Dispatchers.Main){
+                if(id == null){
 
-                    Toast.makeText(requireContext(), "아이디는 ${id}입니다.", Toast.LENGTH_SHORT).show()
+                    withContext(Dispatchers.Main){
+
+                        Toast.makeText(requireContext(), "다시 입력하세요", Toast.LENGTH_SHORT).show()
+
+                    }
 
                 }
+                else{
+
+                    withContext(Dispatchers.Main){
+
+                        Toast.makeText(requireContext(), "아이디는 ${id}입니다.", Toast.LENGTH_SHORT).show()
+
+                    }
+
+
+
+                }
+
 
             }
 

@@ -13,7 +13,10 @@ interface UserDAO {
     fun getPasswordByEmail(id: String): String
 
     @Query("SELECT id FROM userinfo WHERE name = :name AND phoneNumber = :number")
-    fun getIdByName(name: String, number: String):String
+    fun getIdByName(name: String, number: String): String
+
+    @Query("SELECT password FROM userinfo WHERE name = :name AND phoneNumber = :number AND id = :id")
+    fun getPasswordById(id: String, name: String, number: String): String
 
     @Insert
     fun insertUser(userInfo: UserEntity)    // 회원 등록

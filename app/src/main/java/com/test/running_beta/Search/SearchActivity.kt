@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.test.running_beta.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
@@ -38,6 +39,12 @@ class SearchActivity : AppCompatActivity() {
         ViewPager2 = binding.pager
 
         ViewPager2.adapter = ViewPager2Adapter(supportFragmentManager, lifecycle)
+
+        TabLayoutMediator(TabLayout, ViewPager2) { tab, position ->
+
+            tab.text = tabTitleArray[position]
+
+        }.attach()
 
 
     }

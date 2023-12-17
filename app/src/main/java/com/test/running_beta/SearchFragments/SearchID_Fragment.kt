@@ -45,7 +45,7 @@ class SearchID_Fragment : Fragment() {
 
             CoroutineScope(Dispatchers.Main).launch {
 
-                id = CoroutineScope(Dispatchers.IO).async { findId(name,number) }.await()
+                id = findIdAsync(name, number)
 
                 val builder = AlertDialog.Builder(requireContext())
 
@@ -86,6 +86,12 @@ class SearchID_Fragment : Fragment() {
 
         return id
 
+    }
+
+    suspend fun findIdAsync(name: String, number: String): String {
+        return CoroutineScope(Dispatchers.IO).async {
+            findId(name, number)
+        }.await()
     }
 
 }

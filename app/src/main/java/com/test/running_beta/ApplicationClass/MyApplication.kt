@@ -2,20 +2,18 @@ package com.test.running_beta.ApplicationClass
 
 import android.app.Application
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
-import com.test.running_beta.AppDatabase
-import com.test.running_beta.MainActivity
+import com.test.running_beta.roomDB.AppDatabase
 
 class MyApplication : Application() {
 
     lateinit var sharedPreferences: SharedPreferences
         private set
 
-    lateinit var db:AppDatabase
+    lateinit var db: AppDatabase
 
     override fun onCreate() {
 

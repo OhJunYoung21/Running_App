@@ -1,6 +1,5 @@
-package com.test.running_beta
+package com.test.running_beta.roomDB
 
-import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 

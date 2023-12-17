@@ -1,4 +1,4 @@
-package com.test.running_beta
+package com.test.running_beta.roomDB
 
 import android.net.ipsec.ike.exceptions.InvalidMajorVersionException
 import androidx.room.ColumnInfo

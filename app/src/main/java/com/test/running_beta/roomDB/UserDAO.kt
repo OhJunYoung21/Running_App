@@ -1,8 +1,9 @@
-package com.test.running_beta
+package com.test.running_beta.roomDB
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.test.running_beta.roomDB.UserEntity
 
 @Dao
 interface UserDAO {

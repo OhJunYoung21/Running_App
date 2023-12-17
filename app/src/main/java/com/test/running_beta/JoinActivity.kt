@@ -5,15 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.annotation.UiThread
 import androidx.lifecycle.lifecycleScope
-import com.google.android.gms.common.internal.Objects.ToStringHelper
 import com.test.running_beta.databinding.ActivityJoinBinding
+import com.test.running_beta.roomDB.AppDatabase
+import com.test.running_beta.roomDB.UserEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 
 class JoinActivity : AppCompatActivity() {
 

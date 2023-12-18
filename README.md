@@ -38,7 +38,7 @@
 
 [12.View Pager 사용해보기](https://github.com/OhJunYoung21/Running_App/blob/main/View%20Pager.md)
 
-[13.➡️생명주기와 비동기작업](https://github.com/OhJunYoung21/Running_App/blob/main/생명주기와%20비동기작업.md)
+[13.생명주기와 비동기작업](https://github.com/OhJunYoung21/Running_App/blob/main/생명주기와%20비동기작업.md)
 
 
 ## 🧑‍💻피드백 반영 수정사항🧑‍💻

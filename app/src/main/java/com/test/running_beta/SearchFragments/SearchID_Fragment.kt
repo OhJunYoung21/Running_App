@@ -41,8 +41,6 @@ class SearchID_Fragment : Fragment() {
 
             number = binding.Number.text.toString().trim()
 
-
-
             CoroutineScope(Dispatchers.Main).launch {
 
                 id = findIdAsync(name, number)
@@ -54,18 +52,15 @@ class SearchID_Fragment : Fragment() {
                     .setPositiveButton("로그인화면으로 이동",
                         DialogInterface.OnClickListener { dialog, id ->
 
-
                         })
                     .setNegativeButton("취소",
                         DialogInterface.OnClickListener { dialog, id ->
 
                         })
                 builder.show()
-
             }
 
         }
-
     }
 
     override fun onCreateView(
@@ -78,17 +73,16 @@ class SearchID_Fragment : Fragment() {
         return binding.root
     }
 
-    suspend fun findId(name: String, number: String): String {
+    private fun findId(name: String, number: String): String {
 
         db = AppDatabase.getInstance(requireContext())
 
         val id = db.getUserDAO().getIdByName(name, number)
 
         return id
-
     }
 
-    suspend fun findIdAsync(name: String, number: String): String {
+    private suspend fun findIdAsync(name: String, number: String): String {
         return CoroutineScope(Dispatchers.IO).async {
             findId(name, number)
         }.await()

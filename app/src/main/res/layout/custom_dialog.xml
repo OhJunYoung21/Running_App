@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@id/dialog_desc_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:weightSum="2"
         android:orientation="horizontal">
 
@@ -45,11 +45,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text = "취소"
+            android:id = "@+id/cancelBtn"
             android:textColor="@color/white"
             android:backgroundTint="#484C4E"
             style = "@style/dialog_check_button"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id = "@+id/toLoginBtn"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -57,11 +59,6 @@
             android:text = "로그인으로"
             android:textColor="@color/white"
             style = "@style/dialog_check_button"/>
-
-
-
-
-
 
     </LinearLayout>
 

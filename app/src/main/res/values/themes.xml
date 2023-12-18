@@ -7,6 +7,15 @@
 
     </style>
 
+    <style name="dialog_check_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/button_style</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
     <style name="Theme.Running_Beta" parent="Base.Theme.Running_Beta" />
 
     <style name="Theme.Running_Beta.NoActionBar">

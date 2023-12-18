@@ -3,6 +3,8 @@ package com.test.running_beta.UI
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,23 +13,21 @@ import androidx.fragment.app.DialogFragment
 import com.test.running_beta.LoginActivity
 import com.test.running_beta.databinding.CustomDialogBinding
 
-interface ConfirmDialogInterface {
+/**interface ConfirmDialogInterface {
 
     /**인터페이스 내부에는 함수를 선언해줍니다**/
 
-}
+}**/
 
 
 //ConfiemDialog는 내가 넘겨주는 id,password를 받으면 되고, 해당 변수는 content에 넣어주고 ${content}형태로 사용할 것이다.
 class ConfirmDialog(
     context: Context,
-    confirmDialogInterface: ConfirmDialogInterface,
     title: String,
     content: String,
     id: Int
 ) : DialogFragment
     () {
-    private lateinit var confirmDialogInterface: ConfirmDialogInterface
 
     private lateinit var binding: CustomDialogBinding
 
@@ -41,7 +41,6 @@ class ConfirmDialog(
         this.title = title
         this.content = content
         this.id = id
-        this.confirmDialogInterface = confirmDialogInterface
     }
 
     override fun onCreateView(
@@ -54,6 +53,8 @@ class ConfirmDialog(
         binding = CustomDialogBinding.inflate(layoutInflater)
 
         val view = binding.root
+
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         binding.dialogTitleTv.text = title
 
@@ -69,11 +70,15 @@ class ConfirmDialog(
 
         }
 
+        //취소 버튼 클릭시 이벤트
+
         binding.cancelBtn.setOnClickListener {
 
             dismiss()
 
         }
+
+        //로그인 화면 버튼 클릭시 이벤트
 
         binding.toLoginBtn.setOnClickListener {
 
@@ -86,10 +91,9 @@ class ConfirmDialog(
             startActivity(intent)
 
         }
-
-
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return view
     }
+
 
 
 }

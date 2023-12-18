@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.test.running_beta.ApplicationClass.MyApplication
+import com.test.running_beta.UI.ConfirmDialog
 import com.test.running_beta.databinding.FragmentSearchPWBinding
+import com.test.running_beta.roomDB.AppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class SearchPW_Fragment : Fragment() {
@@ -25,8 +25,16 @@ class SearchPW_Fragment : Fragment() {
 
     lateinit var number: String
 
+    private lateinit var password: String
+
+    private lateinit var db: AppDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val title = "비밀번호 찾기"
+
+        val content_1 = "비밀번호"
 
         binding = FragmentSearchPWBinding.inflate(layoutInflater)
 
@@ -36,27 +44,20 @@ class SearchPW_Fragment : Fragment() {
 
             name = binding.Name.text.toString().trim()
 
-            number = binding.Number.toString().trim()
+            number = binding.Number.text.toString().trim()
 
-            CoroutineScope(Dispatchers.IO).launch {
+            CoroutineScope(Dispatchers.Main).launch {
 
-                val password = findPw(id, name, number)
+                password = findAsyncPw(id, name, number)
 
-                if (password != null) {
+                val dialog = ConfirmDialog(requireContext(), title, content_1, password, 1)
 
-                    withContext(Dispatchers.Main) {
+                dialog.isCancelable = false
 
-                        Toast.makeText(
-                            requireContext(),
-                            "비밀번호는 ${password}입니다.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
+                dialog.show(requireFragmentManager(), "findPwProcess")
 
 
             }
-
 
         }
     }
@@ -70,13 +71,20 @@ class SearchPW_Fragment : Fragment() {
     }
 
 
-    suspend fun findPw(id: String, name: String, number: String): String {
+    private fun findPw(id: String, name: String, number: String): String {
 
-        val application = MyApplication()
+        db = AppDatabase.getInstance(requireContext())
 
-        val password = application.db.getUserDAO().getPasswordById(id, name, number)
+        val password_1 =db.getUserDAO().getPasswordById(id, name, number)
 
-        return password
+        return password_1
+
+    }
+
+    private suspend fun findAsyncPw(id: String, name: String, number: String): String {
+        return CoroutineScope(Dispatchers.IO).async {
+            findPw(id, name, number)
+        }.await()
 
     }
 }

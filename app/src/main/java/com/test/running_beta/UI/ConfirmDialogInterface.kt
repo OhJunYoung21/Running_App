@@ -15,38 +15,35 @@ import com.test.running_beta.databinding.CustomDialogBinding
 
 /**interface ConfirmDialogInterface {
 
-    /**인터페이스 내부에는 함수를 선언해줍니다**/
+/**인터페이스 내부에는 함수를 선언해줍니다**/
 
 }**/
 
 
 //ConfiemDialog는 내가 넘겨주는 id,password를 받으면 되고, 해당 변수는 content에 넣어주고 ${content}형태로 사용할 것이다.
 class ConfirmDialog(
-    context: Context,
-    title: String,
-    content: String,
-    id: Int
-) : DialogFragment
-    () {
+    context: Context, title: String, content_1: String, content_2: String, id: Int
+) : DialogFragment() {
 
     private lateinit var binding: CustomDialogBinding
 
     private lateinit var title: String
 
-    private lateinit var content: String
+    private lateinit var content_1: String
+
+    private lateinit var content_2: String
 
     private var id: Int? = null
 
     init {
         this.title = title
-        this.content = content
+        this.content_1 = content_1
+        this.content_2 = content_2
         this.id = id
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
 
@@ -60,13 +57,13 @@ class ConfirmDialog(
 
         /** null값이 들어오는 부분을 처리한다**/
 
-        if (content == null) {
+        if (content_1 == null && content_2 == null) {
 
             binding.dialogDescTv.visibility = View.GONE
 
         } else {
 
-            binding.dialogDescTv.text = "회원님의 아이디는 ${content}입니다."
+            binding.dialogDescTv.text = "회원님의 ${content_1}는 ${content_2}입니다."
 
         }
 
@@ -93,7 +90,6 @@ class ConfirmDialog(
         }
         return view
     }
-
 
 
 }

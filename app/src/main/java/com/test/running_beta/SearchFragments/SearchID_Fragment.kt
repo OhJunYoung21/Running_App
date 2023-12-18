@@ -12,6 +12,7 @@ import com.test.running_beta.roomDB.AppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 
@@ -31,6 +32,8 @@ class SearchID_Fragment : Fragment() {
 
     private val title: String = "아이디 찾기"
 
+    private val content_1: String = "아이디"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,12 +49,13 @@ class SearchID_Fragment : Fragment() {
 
                 id = findIdAsync(name, number)
 
-                val dialogFragment = ConfirmDialog(requireContext(), title, id, 0)
+                val dialogFragment = ConfirmDialog(requireContext(), title, content_1, id, 0)
 
                 dialogFragment.isCancelable = false
 
                 dialogFragment.show(requireFragmentManager(), "findIdProcess")
 
+                cancel()
 
             }
 

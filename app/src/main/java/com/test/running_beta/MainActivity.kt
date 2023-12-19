@@ -1,16 +1,10 @@
 package com.test.running_beta
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
+import androidx.appcompat.app.AppCompatActivity
 import com.test.running_beta.ApplicationClass.MyApplication
 import com.test.running_beta.databinding.ActivityMainBinding
-import kotlin.math.log
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,11 +25,14 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
 
+            finish()
+
         }
         //로그 아웃 버튼 클릭 시 이동
-        binding.logout.setOnClickListener {
 
-            //logOut()
+        binding.logOut.setOnClickListener {
+
+            logOut()
 
             val intent = Intent(this, LoginActivity::class.java)
 
@@ -43,17 +40,10 @@ class MainActivity : AppCompatActivity() {
 
             finish()
 
-            Toast.makeText(this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
 
         }
 
 
-        binding.Running.setOnClickListener {
-
-            val intent = Intent(this, InsideActivity::class.java)
-            startActivity(intent)
-
-        }
     }
 
     fun isLoggedIn(): Boolean {
@@ -62,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         val sharedPreference = myApplication.sharedPreferences
 
-        return sharedPreference.getBoolean("isLoggedIn",false)
+        return sharedPreference.getBoolean("isLoggedIn", false)
     }
 
     fun logOut() {
@@ -73,7 +63,6 @@ class MainActivity : AppCompatActivity() {
         myApplication.saveLoggedInId("")
 
     }
-
 
 
 }

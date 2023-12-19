@@ -16,6 +16,14 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="main_button">
+        <item name="android:background">@drawable/button_style</item>
+        <item name="android:textSize">35sp</item>
+        <item name = "android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/bm</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
     <style name="Theme.Running_Beta" parent="Base.Theme.Running_Beta" />
 
     <style name="Theme.Running_Beta.NoActionBar">

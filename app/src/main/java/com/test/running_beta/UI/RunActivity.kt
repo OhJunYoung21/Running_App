@@ -1,15 +1,16 @@
 package com.test.running_beta.UI
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.LocationTrackingMode
 import com.naver.maps.map.MapFragment
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
-import com.naver.maps.map.overlay.LocationOverlay
 import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
+import com.test.running_beta.R
 import com.test.running_beta.R.id
 import com.test.running_beta.databinding.ActivityRunBinding
 import java.security.Permission
@@ -31,6 +32,12 @@ class RunActivity : AppCompatActivity(), OnMapReadyCallback {
         val view = binding.root
 
         setContentView(view)
+
+        setSupportActionBar(binding.toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        supportActionBar?.setTitle(null)
 
         val fm = supportFragmentManager
 
@@ -63,7 +70,7 @@ class RunActivity : AppCompatActivity(), OnMapReadyCallback {
 
         /**좌측 하단에 있는 현위치 버튼을 활성화 시키는 코드**/
 
-        uiSettings.isLocationButtonEnabled = true
+        uiSettings.isLocationButtonEnabled = false
 
         naverMap.locationTrackingMode = LocationTrackingMode.Follow
 
@@ -77,24 +84,24 @@ class RunActivity : AppCompatActivity(), OnMapReadyCallback {
 
             locationOverlay.position = currentLatLng
 
+            locationOverlay.icon =
+                OverlayImage.fromResource(R.drawable.run)
+
+            locationOverlay.iconWidth = 50
+            locationOverlay.iconHeight = 50
+
         }
-
-        locationOverlay.icon =
-            OverlayImage.fromResource(com.naver.maps.map.R.drawable.navermap_location_overlay_icon)
-
-        locationOverlay.iconWidth = LocationOverlay.SIZE_AUTO
-        locationOverlay.iconHeight = LocationOverlay.SIZE_AUTO
 
 
     }
+
+    /**locationSource interface 안의 메서드 이므로 자동 으로 호출 된다.**/
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-
-        /** FusedLocationSource 는 onRequestPermissionResult()메서드 를 interface 안에 가지고 있기에 사용 가능 하다.**/
 
         if (locationSource.onRequestPermissionsResult(
                 requestCode, permissions,
@@ -113,5 +120,17 @@ class RunActivity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+
+            else -> {}
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

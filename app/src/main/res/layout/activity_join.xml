@@ -8,34 +8,46 @@
     tools:context=".JoinActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id = "@+id/appBar"
+
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="@color/material_dynamic_primary90"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+            android:layout_height="?attr/actionBarSize"
+            android:textAlignment="gravity">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="60dp"
+                android:fontFamily="@font/bm"
+                android:text="회원가입"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+        </androidx.appcompat.widget.Toolbar>
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
 
     <ImageView
-        android:id = "@+id/logo"
-        android:layout_margin="10dp"
+        android:id="@+id/logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src = "@drawable/run"
+        android:layout_margin="10dp"
         android:layout_marginBottom="30dp"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
+        android:src="@drawable/run"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
 
     <EditText
         android:id="@+id/userName"
@@ -43,143 +55,140 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="이름을 입력하세요"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-         />
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <EditText
-        android:layout_margin="10dp"
+        android:id="@+id/userNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint = "전화번호를 입력하세요"
-        android:id = "@+id/userNumber"
+        android:layout_margin="10dp"
+        android:hint="전화번호를 입력하세요"
         android:inputType="phone"
-        app:layout_constraintTop_toBottomOf="@id/userName"/>
+        app:layout_constraintTop_toBottomOf="@id/userName" />
 
     <LinearLayout
-        android:weightSum="5"
-        android:layout_margin="10dp"
-        android:id = "@+id/userIdLayout"
-        app:layout_constraintTop_toBottomOf="@id/userNumber"
+        android:id="@+id/userIdLayout"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:weightSum="5"
+        app:layout_constraintTop_toBottomOf="@id/userNumber">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_weight="4"
+            android:id="@+id/idLayout"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:hint="ID"
             android:orientation="horizontal"
-            android:id = "@+id/idLayout"
-            android:hint = "ID"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userNumber">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/userId"
+                android:id="@+id/userId"
                 android:layout_width="match_parent"
-                android:backgroundTint="@color/material_dynamic_neutral20"
                 android:layout_height="60dp"
-                 />
+                android:backgroundTint="@color/material_dynamic_neutral20" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:id = "@+id/checkId"
+            android:id="@+id/checkId"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
             android:backgroundTint="@color/material_dynamic_primary30"
-            android:text = "중복확인"/>
+            android:text="중복확인" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id = "@+id/userPwLayout"
-        app:layout_constraintTop_toBottomOf="@id/userIdLayout"
+        android:id="@+id/userPwLayout"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_height="wrap_content">
+        app:layout_constraintTop_toBottomOf="@id/userIdLayout">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:passwordToggleEnabled="true"
-            android:hint = "비밀번호를 입력하세요"
             android:layout_margin="10dp"
+            android:hint="비밀번호를 입력하세요"
+            android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userIdLayout">
+            app:layout_constraintTop_toBottomOf="@id/userIdLayout"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/userPw"
-                android:inputType="numberPassword"
+                android:id="@+id/userPw"
                 android:layout_width="match_parent"
-                android:backgroundTint="@color/material_dynamic_neutral20"
                 android:layout_height="60dp"
-                 />
+                android:backgroundTint="@color/material_dynamic_neutral20"
+                android:inputType="numberPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:passwordToggleEnabled="true"
             android:layout_margin="10dp"
+            android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userIdLayout">
+            app:layout_constraintTop_toBottomOf="@id/userIdLayout"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/userPwRe"
+                android:id="@+id/userPwRe"
                 android:layout_width="match_parent"
-                android:inputType="numberPassword"
-                android:backgroundTint="@color/material_dynamic_neutral20"
                 android:layout_height="60dp"
-                android:hint = "비밀번호를 다시 입력하세요" />
+                android:backgroundTint="@color/material_dynamic_neutral20"
+                android:hint="비밀번호를 다시 입력하세요"
+                android:inputType="numberPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
-        
+
 
         <RadioGroup
-            android:id = "@+id/genderCheck"
-            android:layout_marginStart="20dp"
-            android:weightSum="2"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
+            android:id="@+id/genderCheck"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <RadioButton
-                android:layout_weight="1"
+                android:id="@+id/genderMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text = "남자"
-                android:id = "@+id/genderMale"/>
+                android:layout_weight="1"
+                android:text="남자" />
+
             <RadioButton
-                android:layout_weight="1"
+                android:id="@+id/genderFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text = "여자"
-                android:id = "@+id/genderFemale"/>
+                android:layout_weight="1"
+                android:text="여자" />
 
 
         </RadioGroup>
 
-        
+
         <Button
-            android:id = "@+id/joinBtn"
-            android:stateListAnimator="@null"
-            android:elevation="10dp"
+            android:id="@+id/joinBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text = "회원가입 완료"
-            android:backgroundTint="#69976B"/>
+            android:backgroundTint="#69976B"
+            android:elevation="10dp"
+            android:stateListAnimator="@null"
+            android:text="회원가입 완료" />
 
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

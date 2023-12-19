@@ -3,8 +3,10 @@
     <style name="Base.Theme.Running_Beta" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-
-
+        <item name="android:titleTextStyle">@style/YourTitleTextStyle</item>
+        <item name="titleTextColor">@color/black</item>
+        <item name="homeAsUpIndicator">@drawable/baseline_arrow_back_24</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="dialog_check_button">
@@ -19,7 +21,7 @@
     <style name="main_button">
         <item name="android:background">@drawable/button_style</item>
         <item name="android:textSize">35sp</item>
-        <item name = "android:textColor">@color/white</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/bm</item>
         <item name="android:textAlignment">center</item>
     </style>
@@ -32,13 +34,32 @@
     </style>
 
     <style name="Theme.Running_Beta.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-
+        <item name="android:titleTextStyle">@style/YourTitleTextStyle</item>
         <item name="titleTextColor">@color/black</item>
         <item name="homeAsUpIndicator">@drawable/baseline_arrow_back_24</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="Widget.Material3.AppBarLayout." parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:titleTextStyle">@style/YourTitleTextStyle</item>
+        <item name="titleTextColor">@color/black</item>
+        <item name="homeAsUpIndicator">@drawable/baseline_arrow_back_24</item>
+        <item name="android:layout_gravity">center</item>
 
     </style>
 
+    <style name="YourTitleTextStyle">
+        <item name="fontFamily">@font/bm</item>
+    </style>
+
     <style name="Theme.Running_Beta.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MyToolBar" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextColor">@color/black</item>
+        <item name="homeAsUpIndicator">@drawable/baseline_arrow_back_24</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="fontFamily">@font/bm</item>
+    </style>
 
 
 </resources>

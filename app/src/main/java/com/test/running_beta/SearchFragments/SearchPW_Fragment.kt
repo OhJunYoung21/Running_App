@@ -11,6 +11,7 @@ import com.test.running_beta.roomDB.AppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 
@@ -56,6 +57,7 @@ class SearchPW_Fragment : Fragment() {
 
                 dialog.show(requireFragmentManager(), "findPwProcess")
 
+                cancel()
 
             }
 

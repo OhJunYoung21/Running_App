@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.test.running_beta.ApplicationClass.MyApplication
+import com.test.running_beta.UI.RunActivity
 import com.test.running_beta.databinding.ActivityMainBinding
 
 
@@ -29,6 +30,14 @@ class MainActivity : AppCompatActivity() {
 
         }
         //로그 아웃 버튼 클릭 시 이동
+
+        binding.run.setOnClickListener {
+
+            val intent = Intent(this, RunActivity::class.java)
+
+            startActivity(intent)
+
+        }
 
         binding.logOut.setOnClickListener {
 

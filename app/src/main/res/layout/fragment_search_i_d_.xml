@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/material_dynamic_primary90"
+    android:background="@color/white"
     tools:context=".SearchFragments.SearchID_Fragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout

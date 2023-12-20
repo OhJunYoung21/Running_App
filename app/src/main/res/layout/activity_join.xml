@@ -30,7 +30,8 @@
                 android:fontFamily="@font/bm"
                 android:text="회원가입"
                 android:textAlignment="center"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                tools:ignore="HardcodedText" />
 
         </androidx.appcompat.widget.Toolbar>
 

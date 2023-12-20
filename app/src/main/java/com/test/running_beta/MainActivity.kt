@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.test.running_beta.ApplicationClass.MyApplication
-import com.test.running_beta.UI.RunActivity
 import com.test.running_beta.databinding.ActivityMainBinding
 
 

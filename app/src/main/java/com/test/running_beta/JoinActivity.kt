@@ -48,7 +48,7 @@ class JoinActivity : AppCompatActivity() {
 
         supportActionBar?.setIcon(R.drawable.arrow_button)
 
-        supportActionBar?.setTitle("회원가입")
+        supportActionBar?.setTitle("")
 
         gender = ""
 

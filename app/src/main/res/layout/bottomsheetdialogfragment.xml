@@ -9,14 +9,15 @@
     tools:context=".RunActivity">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="500dp"
-        android:layout_gravity="center_vertical"
-        android:fontFamily="@font/bm"
-        android:text="테스트 Bottom Sheet"
-        android:textSize="40sp"
-        tools:ignore="HardcodedText" />
+    <FrameLayout
+        android:id="@+id/mapContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+
+
+
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -37,16 +37,28 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
+    <FrameLayout
+        android:layout_margin="10dp"
+        android:id = "@+id/mapFragmentContainer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"/>
+
+
     <androidx.appcompat.widget.AppCompatButton
-        android:fontFamily="@font/bm"
-        android:textSize="25dp"
-        android:text = "실시간 경로 보기"
         android:id="@+id/showRoute"
         style="@style/dialog_check_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:backgroundTint="@color/material_dynamic_primary90"
+        android:fontFamily="@font/bm"
+        android:text="실시간 경로 보기"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 

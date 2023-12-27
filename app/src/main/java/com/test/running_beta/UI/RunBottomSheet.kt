@@ -1,5 +1,6 @@
 package com.test.running_beta.UI
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +8,10 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.test.running_beta.databinding.BottomsheetdialogfragmentBinding
 
-class RunBottomSheetFragment() : BottomSheetDialogFragment() {
+class RunBottomSheetFragment(context: Context) : BottomSheetDialogFragment() {
 
-    lateinit var binding: BottomsheetdialogfragmentBinding
+
+    private lateinit var binding:BottomsheetdialogfragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,17 +21,15 @@ class RunBottomSheetFragment() : BottomSheetDialogFragment() {
 
         binding = BottomsheetdialogfragmentBinding.inflate(layoutInflater)
 
-        return binding.root
+        val view = binding.root
+
+        return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
 
     companion object {
 
-        val tag = "123"
+        private const val tag = "123"
 
     }
 

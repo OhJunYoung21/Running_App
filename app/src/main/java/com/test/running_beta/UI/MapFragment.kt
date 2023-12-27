@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.naver.maps.geometry.LatLng
 import com.test.running_beta.databinding.MapfragmentBinding
 
 class MapFragment : Fragment(), OnMapReadyCallback {
+
+    private lateinit var FusedLocationProviderClient: FusedLocationProviderClient
 
     private lateinit var mapView: MapView
 
@@ -35,6 +37,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(p0: GoogleMap) {
-        val marker = LatLng(37.568291,126.997780)
+
+
     }
 }

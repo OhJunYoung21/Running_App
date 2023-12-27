@@ -8,6 +8,10 @@
     app:layout_behavior="com.google.android.material.bottomSheet.BottomSheetBehavior"
     tools:context=".RunActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

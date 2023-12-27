@@ -1,12 +1,10 @@
 package com.test.running_beta
 
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.test.running_beta.UI.MapFragment
 import com.test.running_beta.UI.RunBottomSheetFragment
@@ -35,6 +33,7 @@ class RunActivity : AppCompatActivity() {
         supportActionBar?.setTitle("")
 
 
+
         val mapFragment = MapFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.mapFragmentContainer, mapFragment)
@@ -42,8 +41,6 @@ class RunActivity : AppCompatActivity() {
 
 
         binding.showRoute.setOnClickListener {
-
-            ActivityCompat.requestPermissions(this, arrayOf(ACCESS_COARSE_LOCATION), requestCode)
 
             sheet = RunBottomSheetFragment(this)
 
@@ -97,7 +94,6 @@ class RunActivity : AppCompatActivity() {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
             }
-
 
         }
     }

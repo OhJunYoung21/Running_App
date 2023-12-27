@@ -44,6 +44,8 @@
 
 [14.BottomSheet 사용하기](https://github.com/OhJunYoung21/Running_App/blob/main/Bottom%20Sheet.md)
 
+[15.권한요청](https://github.com/OhJunYoung21/Running_App/blob/main/권한%20요청.md)
+
 
 ## 🧑‍💻피드백 반영 수정사항🧑‍💻
 

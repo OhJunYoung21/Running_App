@@ -1,10 +1,13 @@
 package com.test.running_beta
 
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.test.running_beta.UI.MapFragment
 import com.test.running_beta.UI.RunBottomSheetFragment
@@ -32,12 +35,10 @@ class RunActivity : AppCompatActivity() {
 
         supportActionBar?.setTitle("")
 
-
-
-        val mapFragment = MapFragment()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mapFragmentContainer, mapFragment)
-            .commit()
+        ActivityCompat.requestPermissions(
+            this, arrayOf(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION),
+            requestCode
+        )
 
 
         binding.showRoute.setOnClickListener {
@@ -76,10 +77,13 @@ class RunActivity : AppCompatActivity() {
 
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-
                     Toast.makeText(this, "권한이 승인되었습니다.", Toast.LENGTH_SHORT).show()
+                    val mapFragment = MapFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.mapFragmentContainer, mapFragment)
+                        .commit()
 
-                }else{
+                } else {
 
 
                     Toast.makeText(this, "권한이 미승인되었습니다.", Toast.LENGTH_SHORT).show()

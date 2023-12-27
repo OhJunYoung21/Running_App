@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_dynamic_primary90"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".Search.SearchActivity">
 
@@ -12,7 +12,7 @@
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/material_dynamic_primary90"
+        android:backgroundTint="@color/white"
         app:layout_constraintTop_toTopOf="parent">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -25,7 +25,7 @@
         android:id="@+id/TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/material_dynamic_primary90"
+        android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/appBar" />
 
 

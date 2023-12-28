@@ -1,6 +1,5 @@
 package com.test.running_beta
 
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -10,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.test.running_beta.UI.MapFragment
+import com.test.running_beta.UI.PermissionDialog
 import com.test.running_beta.UI.RunBottomSheetFragment
 import com.test.running_beta.databinding.ActivityRunBinding
 
@@ -28,17 +28,34 @@ class RunActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         supportActionBar?.setIcon(R.drawable.arrow_button)
 
         supportActionBar?.setTitle("")
 
-        ActivityCompat.requestPermissions(
-            this, arrayOf(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION),
-            requestCode
-        )
+        /**권한이 요청되고 승인되었는지를 확인하는 코드**/
+
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            ActivityCompat.requestPermissions(
+                this, arrayOf(ACCESS_FINE_LOCATION),
+                requestCode
+            )
+        }
+
+        /**지도를 띄우는 코드**/
+
+        val mapFragment = MapFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.mapFragmentContainer, mapFragment)
+            .commit()
+
 
 
         binding.showRoute.setOnClickListener {
@@ -78,18 +95,17 @@ class RunActivity : AppCompatActivity() {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     Toast.makeText(this, "권한이 승인되었습니다.", Toast.LENGTH_SHORT).show()
-                    val mapFragment = MapFragment()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.mapFragmentContainer, mapFragment)
-                        .commit()
 
-                } else {
+                }else{
 
+                    val dialogFragment = PermissionDialog(this,1)
 
-                    Toast.makeText(this, "권한이 미승인되었습니다.", Toast.LENGTH_SHORT).show()
+                    dialogFragment.isCancelable = false
+
+                    dialogFragment.show(supportFragmentManager, "findIdProcess")
+
 
                 }
-
 
             }
 
@@ -108,4 +124,6 @@ class RunActivity : AppCompatActivity() {
         private const val requestCode: Int = 101
 
     }
+
+
 }

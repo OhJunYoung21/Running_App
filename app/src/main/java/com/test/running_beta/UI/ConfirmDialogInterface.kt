@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.test.running_beta.LoginActivity
 import com.test.running_beta.databinding.CustomDialogBinding
+import com.test.running_beta.databinding.PermissionDialogBinding
 
 /**interface ConfirmDialogInterface {
 
@@ -69,8 +70,7 @@ class ConfirmDialog(
 
             }
 
-        }
-        else if (content_1 == "비밀번호" && content_2 == ""){
+        } else if (content_1 == "비밀번호" && content_2 == "") {
 
             binding.dialogDescTv.text = "매칭되는 비밀번호가 없습니다. 다시 입력하세요"
 
@@ -81,9 +81,7 @@ class ConfirmDialog(
                 dismiss()
 
             }
-        }
-
-        else {
+        } else {
 
             binding.dialogDescTv.text = "회원님의 ${content_1}는 ${content_2}입니다."
 
@@ -119,6 +117,43 @@ class ConfirmDialog(
 
 
 class PermissionDialog(context: Context, id: Int) : DialogFragment() {
+
+    private lateinit var binding: PermissionDialogBinding
+
+
+    private var id: Int? = null
+
+    init {
+        this.id = id
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+
+
+        binding = PermissionDialogBinding.inflate(layoutInflater)
+
+        val view = binding.root
+
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        binding.checkBtn.setOnClickListener {
+
+            /**다이알로그가 실행되는 액티비티를 재시작해야 한다.**/
+            activity?.recreate()
+
+        }
+
+        binding.cancelBtn.setOnClickListener {
+
+            dismiss()
+
+        }
+
+
+        return view
+    }
 
 
 }

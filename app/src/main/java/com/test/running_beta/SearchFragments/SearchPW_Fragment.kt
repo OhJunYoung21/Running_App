@@ -49,7 +49,7 @@ class SearchPW_Fragment : Fragment() {
 
             CoroutineScope(Dispatchers.Main).launch {
 
-                password = findAsyncPw(id, name, number).toString()
+                password = findAsyncPw(id, name, number) ?: ""
 
                 val dialog = ConfirmDialog(requireContext(), title, content_1, password, 1)
 
@@ -77,7 +77,7 @@ class SearchPW_Fragment : Fragment() {
 
         db = AppDatabase.getInstance(requireContext())
 
-        val password_1 =db.getUserDAO().getPasswordById(id, name, number)
+        val password_1 = db.getUserDAO().getPasswordById(id, name, number)
 
         return password_1
 

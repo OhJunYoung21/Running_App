@@ -57,7 +57,7 @@ class ConfirmDialog(
 
         /** null값이 들어오는 부분을 처리한다**/
 
-        if (content_2 == "") {
+        if (content_1 == "아이디" && content_2 == "") {
 
             binding.dialogDescTv.text = "매칭되는 아이디가 없습니다. 다시 입력하세요"
 
@@ -69,7 +69,21 @@ class ConfirmDialog(
 
             }
 
-        } else {
+        }
+        else if (content_1 == "비밀번호" && content_2 == ""){
+
+            binding.dialogDescTv.text = "매칭되는 비밀번호가 없습니다. 다시 입력하세요"
+
+            binding.toLoginBtn.text = "확인"
+
+            binding.toLoginBtn.setOnClickListener {
+
+                dismiss()
+
+            }
+        }
+
+        else {
 
             binding.dialogDescTv.text = "회원님의 ${content_1}는 ${content_2}입니다."
 

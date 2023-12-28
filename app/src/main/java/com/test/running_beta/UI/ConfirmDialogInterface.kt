@@ -140,8 +140,12 @@ class PermissionDialog(context: Context, id: Int) : DialogFragment() {
 
         binding.checkBtn.setOnClickListener {
 
-            /**다이알로그가 실행되는 액티비티를 재시작해야 한다.**/
-            activity?.recreate()
+
+            /** 요구 사항:
+             * Dialog 에서 확인 버튼을 누르면 Dialog 를 종료 시킨다.(후에 위치 권한이 필요하면 다시 재 요청하는 코드를 작성 해야 될듯)
+             */
+
+            dismiss()
 
         }
 

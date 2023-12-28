@@ -49,7 +49,7 @@ class SearchPW_Fragment : Fragment() {
 
             CoroutineScope(Dispatchers.Main).launch {
 
-                password = findAsyncPw(id, name, number)
+                password = findAsyncPw(id, name, number).toString()
 
                 val dialog = ConfirmDialog(requireContext(), title, content_1, password, 1)
 
@@ -73,7 +73,7 @@ class SearchPW_Fragment : Fragment() {
     }
 
 
-    private fun findPw(id: String, name: String, number: String): String {
+    private fun findPw(id: String, name: String, number: String): String? {
 
         db = AppDatabase.getInstance(requireContext())
 
@@ -83,7 +83,7 @@ class SearchPW_Fragment : Fragment() {
 
     }
 
-    private suspend fun findAsyncPw(id: String, name: String, number: String): String {
+    private suspend fun findAsyncPw(id: String, name: String, number: String): String? {
         return CoroutineScope(Dispatchers.IO).async {
             findPw(id, name, number)
         }.await()

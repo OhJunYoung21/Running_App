@@ -28,7 +28,7 @@ class SearchID_Fragment : Fragment() {
 
     lateinit var db: AppDatabase
 
-    lateinit var id: String
+    private lateinit var id:String
 
     private val title: String = "아이디 찾기"
 
@@ -47,7 +47,14 @@ class SearchID_Fragment : Fragment() {
 
             CoroutineScope(Dispatchers.Main).launch {
 
-                id = findIdAsync(name, number)
+                if (findIdAsync(name,number) != null){
+
+                    id = findIdAsync(name,number).toString()
+
+                }else{
+
+                    id = ""
+                }
 
                 val dialogFragment = ConfirmDialog(requireContext(), title, content_1, id, 0)
 
@@ -56,6 +63,7 @@ class SearchID_Fragment : Fragment() {
                 dialogFragment.show(requireFragmentManager(), "findIdProcess")
 
                 cancel()
+
 
             }
 
@@ -72,7 +80,7 @@ class SearchID_Fragment : Fragment() {
         return binding.root
     }
 
-    private fun findId(name: String, number: String): String {
+    private fun findId(name: String, number: String) :String?{
 
         db = AppDatabase.getInstance(requireContext())
 
@@ -81,7 +89,7 @@ class SearchID_Fragment : Fragment() {
         return id
     }
 
-    private suspend fun findIdAsync(name: String, number: String): String {
+    private suspend fun findIdAsync(name: String, number: String) :String?{
         return CoroutineScope(Dispatchers.IO).async {
             findId(name, number)
         }.await()

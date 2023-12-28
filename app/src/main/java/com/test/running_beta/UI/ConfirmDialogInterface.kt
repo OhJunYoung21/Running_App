@@ -57,39 +57,54 @@ class ConfirmDialog(
 
         /** null값이 들어오는 부분을 처리한다**/
 
-        if (content_1 == null && content_2 == null) {
+        if (content_2 == "") {
 
-            binding.dialogDescTv.visibility = View.GONE
+            binding.dialogDescTv.text = "매칭되는 아이디가 없습니다. 다시 입력하세요"
+
+            binding.toLoginBtn.text = "확인"
+
+            binding.toLoginBtn.setOnClickListener {
+
+                dismiss()
+
+            }
 
         } else {
 
             binding.dialogDescTv.text = "회원님의 ${content_1}는 ${content_2}입니다."
 
+            //취소 버튼 클릭시 이벤트
+
+            binding.cancelBtn.setOnClickListener {
+
+                dismiss()
+
+            }
+
+            //로그인 화면 버튼 클릭시 이벤트
+
+            binding.toLoginBtn.setOnClickListener {
+
+                dismiss()
+
+                (context as? Activity)?.finish()
+
+                val intent = Intent(context, LoginActivity::class.java)
+
+                startActivity(intent)
+
+            }
+
         }
 
-        //취소 버튼 클릭시 이벤트
-
-        binding.cancelBtn.setOnClickListener {
-
-            dismiss()
-
-        }
-
-        //로그인 화면 버튼 클릭시 이벤트
-
-        binding.toLoginBtn.setOnClickListener {
-
-            dismiss()
-
-            (context as? Activity)?.finish()
-
-            val intent = Intent(context, LoginActivity::class.java)
-
-            startActivity(intent)
-
-        }
         return view
     }
+
+
+}
+
+
+class PermissionDialog(context: Context, id: Int) : DialogFragment() {
 
 
 }

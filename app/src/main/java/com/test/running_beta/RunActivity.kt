@@ -15,6 +15,7 @@ import com.test.running_beta.databinding.ActivityRunBinding
 
 class RunActivity : AppCompatActivity() {
 
+    private val requestCode: Int = 101
 
     lateinit var binding: ActivityRunBinding
 
@@ -96,13 +97,26 @@ class RunActivity : AppCompatActivity() {
 
                     Toast.makeText(this, "권한이 승인되었습니다.", Toast.LENGTH_SHORT).show()
 
-                }else{
+                }
+                /**권한 요청이 거부된 경우*/
+                else if(grantResults[0] == PackageManager.PERMISSION_DENIED){
 
                     val dialogFragment = PermissionDialog(this,1)
 
                     dialogFragment.isCancelable = false
 
                     dialogFragment.show(supportFragmentManager, "findIdProcess")
+
+                    if(dialogFragment.getCheck() == 1){
+
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED
+
+                        ActivityCompat.requestPermissions(
+                            this, arrayOf(ACCESS_FINE_LOCATION),
+                            requestCode)
+
+                    }
+
 
 
                 }
@@ -116,13 +130,6 @@ class RunActivity : AppCompatActivity() {
             }
 
         }
-    }
-
-
-    companion object {
-
-        private const val requestCode: Int = 101
-
     }
 
 

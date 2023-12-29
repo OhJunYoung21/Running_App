@@ -30,6 +30,7 @@ class ConfirmDialog(
 
     private lateinit var title: String
 
+
     private lateinit var content_1: String
 
     private lateinit var content_2: String
@@ -120,6 +121,7 @@ class PermissionDialog(context: Context, id: Int) : DialogFragment() {
 
     private lateinit var binding: PermissionDialogBinding
 
+    private var check = 0
 
     private var id: Int? = null
 
@@ -144,8 +146,9 @@ class PermissionDialog(context: Context, id: Int) : DialogFragment() {
             /** 요구 사항:
              * Dialog 에서 확인 버튼을 누르면 Dialog 를 종료 시킨다.(후에 위치 권한이 필요하면 다시 재 요청하는 코드를 작성 해야 될듯)
              */
-
+            check = 1
             dismiss()
+
 
         }
 
@@ -157,6 +160,13 @@ class PermissionDialog(context: Context, id: Int) : DialogFragment() {
 
 
         return view
+    }
+
+
+    fun getCheck(): Int {
+
+        return check
+
     }
 
 

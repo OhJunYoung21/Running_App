@@ -46,7 +46,20 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="500dp"/>
+        android:layout_height="450dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintBottom_toTopOf="@id/showRoute"
+        android:id="@+id/startRun"
+        style="@style/dialog_check_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:backgroundTint="@color/material_dynamic_primary90"
+        android:fontFamily="@font/bm"
+        android:text="달리기 시작"
+        android:textSize="25dp"
+        />
 
 
     <androidx.appcompat.widget.AppCompatButton

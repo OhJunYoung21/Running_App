@@ -70,7 +70,7 @@
         android:layout_margin="15dp"
         android:backgroundTint="@color/material_dynamic_primary90"
         android:fontFamily="@font/bm"
-        android:text="실시간 경로 보기"
+        android:text="실시간 정보 보기"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 

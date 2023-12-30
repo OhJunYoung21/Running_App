@@ -46,14 +46,25 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(p0: GoogleMap) {
 
-        if(ContextCompat.checkSelfPermission(requireContext(),ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+
+
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
 
             p0.isMyLocationEnabled = true
             fusedLocationClient?.lastLocation
                 ?.addOnSuccessListener { it ->
                     if (it != null) {
                         val markerOptions = MarkerOptions()
-                            .position(com.google.android.gms.maps.model.LatLng(it.latitude, it.longitude))
+                            .position(
+                                com.google.android.gms.maps.model.LatLng(
+                                    it.latitude,
+                                    it.longitude
+                                )
+                            )
                             .title("Marker Title")
 
                         val marker = p0.addMarker(markerOptions)

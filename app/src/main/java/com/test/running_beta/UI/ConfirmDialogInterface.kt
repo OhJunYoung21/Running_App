@@ -141,13 +141,10 @@ class PermissionDialog(context: Context, id: Int) : DialogFragment() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         binding.checkBtn.setOnClickListener {
-
-
             /** 요구 사항:
              * Dialog 에서 확인 버튼을 누르면 Dialog 를 종료 시킨다.(후에 위치 권한이 필요하면 다시 재 요청하는 코드를 작성 해야 될듯)
              */
-            check = 1
-            dismiss()
+            System.exit(0)
 
 
         }

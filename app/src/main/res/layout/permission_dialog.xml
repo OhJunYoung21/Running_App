@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:text="권한 미승인시 지도가 나오지 않습니다."
+        android:text="해당 권한은 필수권한입니다."
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"

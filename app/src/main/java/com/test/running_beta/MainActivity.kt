@@ -11,12 +11,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private var requestCode = 101
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+
 
         //로그인 된 상태가 아니라면 로그인 화면으로 이동
         if (!isLoggedIn()) {
@@ -71,6 +75,8 @@ class MainActivity : AppCompatActivity() {
         myApplication.saveLoggedInId("")
 
     }
+
+
 
 
 }

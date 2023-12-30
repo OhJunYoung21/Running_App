@@ -8,10 +8,17 @@
     app:layout_behavior="com.google.android.material.bottomSheet.BottomSheetBehavior"
     tools:context=".RunActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="400dp" />
 
+    <FrameLayout
+        android:layout_margin="20dp"
+        android:background="@drawable/map_border"
+        android:id="@+id/mapFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

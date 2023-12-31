@@ -38,92 +38,83 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/map_border"
             android:backgroundTint="@color/material_dynamic_primary90"
-            android:background="@drawable/map_border">
+            android:orientation="vertical">
 
             <TextView
+                style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text = "test1"
-                android:textAlignment="center"
-                android:textSize="40sp"
-                android:fontFamily="@font/bm"/>
+                android:text="test1"
+                android:textSize="40sp" />
 
             <TextView
-                android:textAlignment="center"
+                style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text = "sub_test1"/>
+                android:text="sub_test1" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/map_border"
             android:backgroundTint="@color/material_dynamic_primary90"
-            android:background="@drawable/map_border">
+            android:orientation="vertical">
 
             <TextView
+                style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text = "test1"
-                android:textAlignment="center"
-                android:textSize="40sp"
-                android:fontFamily="@font/bm"/>
+                android:text="test1"
+                android:textSize="40sp" />
 
             <TextView
-                android:textAlignment="center"
+                style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text = "sub_test1"/>
+                android:text="sub_test1" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/map_border"
             android:backgroundTint="@color/material_dynamic_primary90"
-            android:background="@drawable/map_border">
+            android:orientation="vertical">
 
             <TextView
+                style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text = "test1"
-                android:textAlignment="center"
-                android:textSize="40sp"
-                android:fontFamily="@font/bm"/>
+                android:text="test1"
+                android:textSize="40sp" />
 
             <TextView
-                android:textAlignment="center"
+                style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text = "sub_test1"/>
+                android:text="sub_test1" />
 
         </LinearLayout>
-
-
-
-
 
 
     </LinearLayout>
-
-
 
 
     <androidx.appcompat.widget.AppCompatButton

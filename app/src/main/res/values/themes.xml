@@ -63,6 +63,14 @@
     </style>
 
 
+    <style name="runText" parent="Theme.AppCompat.DayNight.DarkActionBar">
+
+        <item name = "android:fontFamily">@font/bm</item>
+        <item name = "android:textAlignment">center</item>
+
+    </style>
+
+
 
 
 

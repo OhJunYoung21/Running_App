@@ -56,14 +56,14 @@
                 style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="test1"
+                android:text="달린 시간"
                 android:textSize="40sp" />
 
             <TextView
                 style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="sub_test1" />
+                android:text="00:00" />
 
         </LinearLayout>
 
@@ -79,14 +79,14 @@
                 style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="test1"
+                android:text="걸음 수"
                 android:textSize="40sp" />
 
             <TextView
                 style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="sub_test1" />
+                android:text="00걸음" />
 
         </LinearLayout>
 
@@ -102,14 +102,14 @@
                 style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="test1"
+                android:text="평균 속도"
                 android:textSize="40sp" />
 
             <TextView
                 style="@style/runText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="sub_test1" />
+                android:text="00km/h" />
 
         </LinearLayout>
 

@@ -56,7 +56,4 @@ class MyApplication : Application() {
         saveLoggedInId(id)
     }
 
-
-
-
 }

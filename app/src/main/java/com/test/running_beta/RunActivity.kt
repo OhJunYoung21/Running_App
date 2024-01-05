@@ -1,9 +1,11 @@
 package com.test.running_beta
 
-import android.Manifest.permission.ACTIVITY_RECOGNITION
+import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -12,13 +14,28 @@ import com.test.running_beta.UI.RunBottomSheetFragment
 import com.test.running_beta.databinding.ActivityRunBinding
 
 class RunActivity : AppCompatActivity() {
-
-    private val requestCode: Int = 101
-
     lateinit var binding: ActivityRunBinding
 
     private val requestPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                Toast.makeText(this, "권한이 승인되었습니다.", Toast.LENGTH_SHORT).show()
+            } else {
+                if (ContextCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.ACTIVITY_RECOGNITION
+                    )
+                    != PackageManager.PERMISSION_GRANTED
+                ) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        ActivityCompat.requestPermissions(
+                            this,
+                            arrayOf(Manifest.permission.ACTIVITY_RECOGNITION),
+                            requestCode
+                        )
+                    }
+                }
+            }
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,18 +51,9 @@ class RunActivity : AppCompatActivity() {
 
         supportActionBar?.setIcon(R.drawable.arrow_button)
 
-        supportActionBar?.setTitle("")
+        supportActionBar?.title = ""
 
-        if (ContextCompat.checkSelfPermission(this, ACTIVITY_RECOGNITION)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(ACTIVITY_RECOGNITION),
-                requestCode
-            )
-        }
-
+        //requestPermission.launch(com.test.running_beta.Manifest.permission.ACTIVITY_RECOGNITION)
 
 
         binding.showRoute.setOnClickListener {
@@ -66,5 +74,7 @@ class RunActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
+    companion object {
+        internal const val requestCode: Int = 101
+    }
 }

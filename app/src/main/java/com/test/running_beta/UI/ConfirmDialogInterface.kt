@@ -1,5 +1,6 @@
 package com.test.running_beta.UI
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -9,8 +10,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import com.test.running_beta.LoginActivity
+import com.test.running_beta.RunActivity
 import com.test.running_beta.databinding.CustomDialogBinding
 import com.test.running_beta.databinding.PermissionDialogBinding
 
@@ -118,11 +121,8 @@ class ConfirmDialog(
 
 
 class PermissionDialog(context: Context, id: Int) : DialogFragment() {
-
     private lateinit var binding: PermissionDialogBinding
-
     private var check = 0
-
     private var id: Int? = null
 
     init {
@@ -132,27 +132,21 @@ class PermissionDialog(context: Context, id: Int) : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-
-
         binding = PermissionDialogBinding.inflate(layoutInflater)
 
         val view = binding.root
-
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
         binding.checkBtn.setOnClickListener {
-            /** 요구 사항:
-             * Dialog 에서 확인 버튼을 누르면 Dialog 를 종료 시킨다.(후에 위치 권한이 필요하면 다시 재 요청하는 코드를 작성 해야 될듯)
-             */
-            System.exit(0)
 
-
+            ActivityCompat.requestPermissions(
+                requireContext() as Activity,
+                arrayOf(Manifest.permission.ACTIVITY_RECOGNITION),
+                RunActivity.requestCode
+            )
         }
 
         binding.cancelBtn.setOnClickListener {
-
-            dismiss()
-
+            requireActivity().finish()
         }
 
 

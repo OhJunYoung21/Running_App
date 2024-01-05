@@ -1,7 +1,6 @@
 package com.test.running_beta.ApplicationClass
 
 import android.app.Application
-import android.content.Context
 import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -35,25 +34,18 @@ class MyApplication : Application() {
     }
 
     fun saveLoginStatus(loggedIn: Boolean) {
-
-        val editor = this.sharedPreferences.edit()
-        editor.putBoolean("isLoggedIn", loggedIn)
-        editor.apply()
+        sharedPreferences.edit().putBoolean("isLoggedIn", loggedIn).apply()
     }
 
     fun saveLoggedInId(userId: String) {
-
         val editor = this.sharedPreferences.edit()
         editor.putString("loggedInUserId", userId)
         editor.apply()
     }
 
-    fun successLogin(id:String,context: Context){
-
+    fun successLogin(id: String) {
         Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
-
         saveLoginStatus(true)
         saveLoggedInId(id)
     }
-
 }

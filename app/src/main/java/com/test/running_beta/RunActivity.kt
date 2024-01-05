@@ -4,10 +4,10 @@ import android.Manifest.permission.ACTIVITY_RECOGNITION
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.test.running_beta.UI.RunBottomSheetFragment
 import com.test.running_beta.databinding.ActivityRunBinding
 
@@ -17,7 +17,10 @@ class RunActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityRunBinding
 
-    private lateinit var sheet: BottomSheetDialogFragment
+    private val requestPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,12 +49,8 @@ class RunActivity : AppCompatActivity() {
 
 
         binding.showRoute.setOnClickListener {
-
-            sheet = RunBottomSheetFragment(this)
-
+            val sheet = RunBottomSheetFragment(this)
             sheet.show(supportFragmentManager, sheet.tag)
-
-
         }
     }
 

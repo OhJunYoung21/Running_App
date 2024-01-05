@@ -1,4 +1,4 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="Base.Theme.Running_Beta" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -65,13 +65,10 @@
 
     <style name="runText" parent="Theme.AppCompat.DayNight.DarkActionBar">
 
-        <item name = "android:fontFamily">@font/bm</item>
-        <item name = "android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/bm</item>
+        <item name="android:textAlignment">center</item>
 
     </style>
-
-
-
 
 
 </resources>

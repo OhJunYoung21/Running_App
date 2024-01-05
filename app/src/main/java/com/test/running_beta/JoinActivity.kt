@@ -57,12 +57,9 @@ class JoinActivity : AppCompatActivity() {
         //아이디 유효성 검사
 
         binding.checkId.setOnClickListener {
-
-            id = binding.userId.text.toString()
-
             lifecycleScope.launch {
 
-                val idExist = checkId(id)
+                val idExist = checkId(binding.userId.text.toString())
 
                 if (idExist) {
                     CoroutineScope(Dispatchers.Main).launch {
@@ -88,6 +85,7 @@ class JoinActivity : AppCompatActivity() {
 
             number = binding.userNumber.text.toString()
 
+            //TODO Extension 함수가 무엇일까요?
             id = binding.userId.text.toString()
 
             password = binding.userPw.text.toString()
@@ -96,18 +94,12 @@ class JoinActivity : AppCompatActivity() {
 
             //성별이 잘 입력됬는지를 확인
 
-            if (binding.genderMale.isChecked) {
-
-                gender = "male"
-
+            gender = if (binding.genderMale.isChecked) {
+                "male"
             } else if (binding.genderFemale.isChecked) {
-
-                gender = "female"
-
+                "female"
             } else {
-
-                gender = ""
-
+                ""
             }
 
             if (binding.userId.text == null) {
@@ -134,14 +126,11 @@ class JoinActivity : AppCompatActivity() {
 
                 Toast.makeText(this, "번호는 필수 입력 사항입니다.", Toast.LENGTH_SHORT).show()
 
-            }else if(gender == ""){
+            } else if (gender == "") {
 
-                Toast.makeText(this,"성별은 필수입력 사항입니다.",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "성별은 필수입력 사항입니다.", Toast.LENGTH_SHORT).show()
 
-            }
-
-
-            else {
+            } else {
 
                 lifecycleScope.launch {
 

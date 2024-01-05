@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:dist="http://schemas.android.com/apk/distribution"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:dist="http://schemas.android.com/apk/distribution">
 
-
-
-    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
-
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -14,14 +10,18 @@
 
     <application
         android:name=".ApplicationClass.MyApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher_runners_foreground"
         android:label="전광석화"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Running_Beta"
-        tools:targetApi="31">
+        android:theme="@style/Theme.Running_Beta">
+        <activity
+            android:name=".UI.MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.Running_Beta" />
         <activity
             android:name=".RunActivity"
             android:exported="false" />

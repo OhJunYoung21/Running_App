@@ -3,7 +3,6 @@ package com.test.running_beta.roomDB
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.test.running_beta.roomDB.UserEntity
 
 @Dao
 interface UserDAO {
@@ -25,5 +24,6 @@ interface UserDAO {
     @Query("DELETE FROM userinfo WHERE id = :id AND password = :password")
     fun deleteUser(id: String, password: String)    // 회원 삭제
 
-
+    @Query("SELECT id FROM UserInfo WHERE id = :id")
+    fun selectId(id: String): String
 }

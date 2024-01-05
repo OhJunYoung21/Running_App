@@ -45,14 +45,10 @@ class SearchID_Fragment : Fragment() {
 
             number = binding.Number.text.toString().trim()
 
-            CoroutineScope(Dispatchers.Main).launch {
-
-                if (findIdAsync(name,number) != null){
-
-                    id = findIdAsync(name,number).toString()
-
-                }else{
-
+            CoroutineScope(Dispatchers.IO).launch {
+                if (findIdAsync(name, number) != null) {
+                    id = findIdAsync(name, number).toString()
+                } else {
                     id = ""
                 }
 
@@ -63,10 +59,7 @@ class SearchID_Fragment : Fragment() {
                 dialogFragment.show(requireFragmentManager(), "findIdProcess")
 
                 cancel()
-
-
             }
-
         }
     }
 
@@ -94,5 +87,4 @@ class SearchID_Fragment : Fragment() {
             findId(name, number)
         }.await()
     }
-
 }

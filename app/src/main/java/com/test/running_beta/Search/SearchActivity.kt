@@ -9,7 +9,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.test.running_beta.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
-
     private val tabTitleArray = arrayOf("아이디 찾기", "비밀번호 찾기")
 
     private lateinit var binding: ActivitySearchBinding

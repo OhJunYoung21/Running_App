@@ -1,6 +1,7 @@
 package com.test.running_beta
 
 import android.Manifest
+import android.Manifest.permission.ACTIVITY_RECOGNITION
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -53,7 +54,7 @@ class RunActivity : AppCompatActivity() {
 
         supportActionBar?.title = ""
 
-        //requestPermission.launch(com.test.running_beta.Manifest.permission.ACTIVITY_RECOGNITION)
+        requestPermission.launch(ACTIVITY_RECOGNITION)
 
 
         binding.showRoute.setOnClickListener {

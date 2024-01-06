@@ -28,6 +28,7 @@ class RunActivity : AppCompatActivity() {
                     )
                     != PackageManager.PERMISSION_GRANTED
                 ) {
+                    //minSDK가 24인 점을 반영한 코드
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                         ActivityCompat.requestPermissions(
                             this,

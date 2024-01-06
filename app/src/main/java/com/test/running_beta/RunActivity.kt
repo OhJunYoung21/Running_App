@@ -1,6 +1,8 @@
 package com.test.running_beta
 
 import android.Manifest
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.ACTIVITY_RECOGNITION
 import android.content.pm.PackageManager
 import android.os.Build
@@ -21,21 +23,42 @@ class RunActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
                 Toast.makeText(this, "권한이 승인되었습니다.", Toast.LENGTH_SHORT).show()
-            } else {
-                if (ContextCompat.checkSelfPermission(
+            } else if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACTIVITY_RECOGNITION
+                )
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    ActivityCompat.requestPermissions(
                         this,
-                        Manifest.permission.ACTIVITY_RECOGNITION
+                        arrayOf(Manifest.permission.ACTIVITY_RECOGNITION),
+                        requestCode
                     )
-                    != PackageManager.PERMISSION_GRANTED
-                ) {
-                    //minSDK가 24인 점을 반영한 코드
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                        ActivityCompat.requestPermissions(
-                            this,
-                            arrayOf(Manifest.permission.ACTIVITY_RECOGNITION),
-                            requestCode
-                        )
-                    }
+                }
+            } else if (ContextCompat.checkSelfPermission(
+                    this,
+                    ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                        requestCode
+                    )
+                }
+            } else if (ContextCompat.checkSelfPermission(
+                    this,
+                    ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                        requestCode
+                    )
                 }
             }
         }

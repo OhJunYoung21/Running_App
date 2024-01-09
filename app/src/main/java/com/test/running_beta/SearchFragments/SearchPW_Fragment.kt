@@ -51,7 +51,7 @@ class SearchPW_Fragment : Fragment() {
 
                 password = findAsyncPw(id, name, number) ?: ""
 
-                val dialog = ConfirmDialog(requireContext(), title, content_1, password, 1)
+                val dialog = ConfirmDialog(title, content_1, password, 1)
 
                 dialog.isCancelable = false
 

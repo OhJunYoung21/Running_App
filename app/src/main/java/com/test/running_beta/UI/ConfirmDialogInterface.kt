@@ -26,31 +26,26 @@ import com.test.running_beta.databinding.PermissionDialogBinding
 
 //ConfiemDialog는 내가 넘겨주는 id,password를 받으면 되고, 해당 변수는 content에 넣어주고 ${content}형태로 사용할 것이다.
 class ConfirmDialog(
-    context: Context, title: String, content_1: String, content_2: String, id: Int
+    title: String, content1: String, content2: String, id: Int
 ) : DialogFragment() {
 
     private lateinit var binding: CustomDialogBinding
 
     private var title: String
-
-
-    private var content_1: String
-
-    private var content_2: String
-
+    private var content1: String
+    private var content2: String
     private var id: Int? = null
 
     init {
         this.title = title
-        this.content_1 = content_1
-        this.content_2 = content_2
+        this.content1 = content1
+        this.content2 = content2
         this.id = id
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
 
         binding = CustomDialogBinding.inflate(layoutInflater)
 
@@ -62,35 +57,22 @@ class ConfirmDialog(
 
         /** null값이 들어오는 부분을 처리한다**/
 
-        if (content_1 == "아이디" && content_2 == "") {
-
+        if (content1 == "아이디" && content2 == "") {
             binding.dialogDescTv.text = "매칭되는 아이디가 없습니다. 다시 입력하세요"
-
             binding.toLoginBtn.text = "확인"
-
             binding.toLoginBtn.setOnClickListener {
-
                 dismiss()
-
             }
 
-        } else if (content_1 == "비밀번호" && content_2 == "") {
-
+        } else if (content1 == "비밀번호" && content2 == "") {
             binding.dialogDescTv.text = "매칭되는 비밀번호가 없습니다. 다시 입력하세요"
-
             binding.toLoginBtn.text = "확인"
-
             binding.toLoginBtn.setOnClickListener {
-
                 dismiss()
-
             }
         } else {
-
-            binding.dialogDescTv.text = "회원님의 ${content_1}는 ${content_2}입니다."
-
+            binding.dialogDescTv.text = "회원님의 ${content1}는 ${content2}입니다."
             //취소 버튼 클릭시 이벤트
-
             binding.cancelBtn.setOnClickListener {
                 dismiss()
             }
@@ -98,8 +80,7 @@ class ConfirmDialog(
 
             binding.toLoginBtn.setOnClickListener {
                 dismiss()
-                val intent = Intent(context, LoginActivity::class.java)
-                intent.putExtra("foundId", id)
+                val intent = Intent(requireContext(), LoginActivity::class.java)
                 (context as? Activity)?.finish()
                 startActivity(intent)
             }

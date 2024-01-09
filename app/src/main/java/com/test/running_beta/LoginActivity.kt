@@ -2,7 +2,6 @@ package com.test.running_beta
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.test.running_beta.ApplicationClass.MyApplication
@@ -23,11 +22,10 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        val application = application as MyApplication
-        val receiveIntent = intent
+        val foundId = intent.getStringExtra("foundId") ?: ""
+        binding.loginId.setText(foundId)
 
-        val foundId = receiveIntent.getStringExtra("foundId") ?: ""
-        Log.d("idTag", foundId)
+        val application = application as MyApplication
 
         binding.join.setOnClickListener {
             val intent = Intent(this, JoinActivity::class.java)
@@ -40,9 +38,8 @@ class LoginActivity : AppCompatActivity() {
             val id = binding.loginId.text.toString()
             val password = binding.loginPw.text.toString()
 
-            //비동기화 처리를 위해 새로운 스레드를 사용한다.
             CoroutineScope(Dispatchers.IO).launch {
-                //TODO QUERY 수정
+                //TODO QUERY 수정(selectId 구현)
                 if (application.db.getUserDAO().selectId(id) == id) {
                     //login 이 성공 했을 경우,EncryptedSharedPreference 객체에 상태와 id,password 저장
                     if (application.db.getUserDAO().getPasswordByEmail(id) == password) {

@@ -31,12 +31,12 @@ class ConfirmDialog(
 
     private lateinit var binding: CustomDialogBinding
 
-    private lateinit var title: String
+    private var title: String
 
 
-    private lateinit var content_1: String
+    private var content_1: String
 
-    private lateinit var content_2: String
+    private var content_2: String
 
     private var id: Int? = null
 
@@ -92,27 +92,18 @@ class ConfirmDialog(
             //취소 버튼 클릭시 이벤트
 
             binding.cancelBtn.setOnClickListener {
-
                 dismiss()
-
             }
-
             //로그인 화면 버튼 클릭시 이벤트
 
             binding.toLoginBtn.setOnClickListener {
-
                 dismiss()
-
-                (context as? Activity)?.finish()
-
                 val intent = Intent(context, LoginActivity::class.java)
-
+                intent.putExtra("foundId", id)
+                (context as? Activity)?.finish()
                 startActivity(intent)
-
             }
-
         }
-
         return view
     }
 

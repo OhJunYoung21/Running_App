@@ -2,6 +2,7 @@ package com.test.running_beta
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.test.running_beta.ApplicationClass.MyApplication
@@ -15,10 +16,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
-    /**
-     * param : Bundle
-     * author : JY
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,6 +24,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val application = application as MyApplication
+        val receiveIntent = intent
+
+        val foundId = receiveIntent.getStringExtra("foundId") ?: ""
+        Log.d("idTag", foundId)
 
         binding.join.setOnClickListener {
             val intent = Intent(this, JoinActivity::class.java)

@@ -46,18 +46,15 @@ class SearchID_Fragment : Fragment() {
             number = binding.Number.text.toString().trim()
 
             CoroutineScope(Dispatchers.IO).launch {
+                //아이디 찾기가 성공적인 경우,loginActivity의 화면에 아이디를 띄워준다.
                 if (findIdAsync(name, number) != null) {
                     id = findIdAsync(name, number).toString()
                 } else {
                     id = ""
                 }
-
                 val dialogFragment = ConfirmDialog(requireContext(), title, content_1, id, 0)
-
                 dialogFragment.isCancelable = false
-
                 dialogFragment.show(requireFragmentManager(), "findIdProcess")
-
                 cancel()
             }
         }

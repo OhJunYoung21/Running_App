@@ -31,66 +31,50 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBar" />
 
-    <LinearLayout
-        android:id="@+id/firstFloor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        app:layout_constraintTop_toBottomOf="@id/logo">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/run"
+        style="@style/main_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="달리기"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/run"
-            style="@style/main_button"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="15dp"
-            android:text="달리기" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cycleBtn"
+        style="@style/main_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="사이클"
+        app:layout_constraintLeft_toRightOf="@id/run"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cycle"
-            style="@style/main_button"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="15dp"
-            android:text="사이클" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/recordBtn"
+        style="@style/main_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="나의 기록"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/run" />
 
-
-    </LinearLayout>
-
-    <LinearLayout
-
-        android:id="@+id/secondFloor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        app:layout_constraintTop_toBottomOf="@id/firstFloor">
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/myRecord"
-            style="@style/main_button"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="15dp"
-            android:text="나의 기록" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/logOut"
-            style="@style/main_button"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="15dp"
-            android:text="로그아웃" />
-
-
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logoutBtn"
+        style="@style/main_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="로그이웃"
+        app:layout_constraintLeft_toRightOf="@id/recordBtn"
+        app:layout_constraintTop_toBottomOf="@id/cycleBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

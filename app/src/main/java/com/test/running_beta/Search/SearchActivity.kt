@@ -1,11 +1,14 @@
 package com.test.running_beta.Search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.test.running_beta.LoginActivity
+import com.test.running_beta.SearchFragments.SearchID_Fragment
 import com.test.running_beta.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
@@ -44,13 +47,16 @@ class SearchActivity : AppCompatActivity() {
             tab.text = tabTitleArray[position]
 
         }.attach()
-
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
+                val fragment = SearchID_Fragment()
+                val intent = Intent(this, LoginActivity::class.java)
+                val foundId = fragment.arguments?.getString("fragmentId")
+                intent.putExtra("foundId", foundId)
+                startActivity(intent)
                 finish()
                 return true
             }

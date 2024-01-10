@@ -3,7 +3,6 @@ package com.test.running_beta.UI
 import android.Manifest
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -12,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
-import com.test.running_beta.LoginActivity
 import com.test.running_beta.RunActivity
 import com.test.running_beta.databinding.CustomDialogBinding
 import com.test.running_beta.databinding.PermissionDialogBinding
@@ -59,15 +57,15 @@ class ConfirmDialog(
 
         if (content1 == "아이디" && content2 == "") {
             binding.dialogDescTv.text = "매칭되는 아이디가 없습니다. 다시 입력하세요"
-            binding.toLoginBtn.text = "확인"
-            binding.toLoginBtn.setOnClickListener {
+            binding.confirmBtn.text = "확인"
+            binding.confirmBtn.setOnClickListener {
                 dismiss()
             }
 
         } else if (content1 == "비밀번호" && content2 == "") {
             binding.dialogDescTv.text = "매칭되는 비밀번호가 없습니다. 다시 입력하세요"
-            binding.toLoginBtn.text = "확인"
-            binding.toLoginBtn.setOnClickListener {
+            binding.confirmBtn.text = "확인"
+            binding.confirmBtn.setOnClickListener {
                 dismiss()
             }
         } else {
@@ -77,12 +75,8 @@ class ConfirmDialog(
                 dismiss()
             }
             //로그인 화면 버튼 클릭시 이벤트
-
-            binding.toLoginBtn.setOnClickListener {
+            binding.confirmBtn.setOnClickListener {
                 dismiss()
-                val intent = Intent(requireContext(), LoginActivity::class.java)
-                (context as? Activity)?.finish()
-                startActivity(intent)
             }
         }
         return view

@@ -48,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                     //password 예외 처리
                     else {
@@ -76,11 +77,13 @@ class LoginActivity : AppCompatActivity() {
         binding.findId.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.findPw.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

@@ -1,13 +1,12 @@
 package com.test.running_beta.SearchFragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.test.running_beta.ApplicationClass.MyApplication
-import com.test.running_beta.LoginActivity
+import com.test.running_beta.UI.ConfirmDialog
 import com.test.running_beta.databinding.FragmentSearchIDBinding
 import com.test.running_beta.roomDB.AppDatabase
 import kotlinx.coroutines.CoroutineScope
@@ -50,16 +49,18 @@ class SearchID_Fragment : Fragment() {
                 //아이디 찾기가 성공적인 경우,loginActivity의 화면에 아이디를 띄워준다.
                 if (findIdAsync(name, number) != null) {
                     id = findIdAsync(name, number).toString()
-                    val intent = Intent(requireContext(), LoginActivity::class.java)
-                    intent.putExtra("foundId", id)
-                    startActivity(intent)
+                    val fragment = SearchID_Fragment()
+                    val bundle = Bundle()
+                    bundle.putString("fragmentId", id)
+                    fragment.arguments = bundle
                 } else {
                     id = ""
                 }
-                /**
+
                 val dialogFragment = ConfirmDialog(title, content_1, id, 0)
                 dialogFragment.isCancelable = false
-                dialogFragment.show(requireFragmentManager(), "findIdProcess")**/
+                dialogFragment.show(requireFragmentManager(), "findIdProcess")
+
                 cancel()
             }
         }

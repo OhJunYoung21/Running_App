@@ -59,13 +59,13 @@
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/toLoginBtn"
+            android:id="@+id/confirmBtn"
             style="@style/dialog_check_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="로그인으로"
+            android:text="확인"
             android:textColor="@color/white" />
 
     </LinearLayout>

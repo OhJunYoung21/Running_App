@@ -33,9 +33,16 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun logOut() {
+    private fun logOut() {
         val myApplication = application as MyApplication
         myApplication.saveLoginStatus(false)
         myApplication.saveLoggedInId("")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        logOut()
+
     }
 }

@@ -48,4 +48,9 @@ class MyApplication : Application() {
         saveLoginStatus(true)
         saveLoggedInId(id)
     }
+
+    fun logOut() {
+        saveLoginStatus(false)
+        saveLoggedInId("")
+    }
 }

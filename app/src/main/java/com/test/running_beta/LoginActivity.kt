@@ -72,18 +72,15 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        //아이디 찾기 버튼으로 이동
         //TODO 아이디 찾기 완료 시, 돌아왔을 때 아이디는 자동입력이 되는것이 좋지 않을까요?
         binding.findId.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         binding.findPw.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 

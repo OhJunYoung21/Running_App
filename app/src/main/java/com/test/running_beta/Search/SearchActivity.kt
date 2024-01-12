@@ -1,14 +1,12 @@
 package com.test.running_beta.Search
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.test.running_beta.LoginActivity
-import com.test.running_beta.SearchFragments.SearchID_Fragment
 import com.test.running_beta.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
@@ -21,6 +19,8 @@ class SearchActivity : AppCompatActivity() {
     // private lateinit var ViewPager2Adapter:ViewPager2Adapter
 
     private lateinit var ViewPager2: ViewPager2
+
+    private var id = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,16 +47,22 @@ class SearchActivity : AppCompatActivity() {
             tab.text = tabTitleArray[position]
 
         }.attach()
+
+        supportFragmentManager.setFragmentResultListener("requestKey", this) { key, bundle ->
+            if (key == "requestKey") {
+                id = bundle.getString("bundleKey").toString()
+            }
+        }
+
+        if (id != "") {
+            Log.d("checkId", id)
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                val fragment = SearchID_Fragment()
-                val intent = Intent(this, LoginActivity::class.java)
-                val foundId = fragment.arguments?.getString("fragmentId")
-                intent.putExtra("foundId", foundId)
-                startActivity(intent)
                 finish()
                 return true
             }

@@ -1,7 +1,6 @@
 package com.test.running_beta.Search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
@@ -54,9 +53,6 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        if (id != "") {
-            Log.d("checkId", id)
-        }
 
     }
 

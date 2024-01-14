@@ -1,7 +1,6 @@
 package com.test.running_beta.SearchFragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +51,7 @@ class SearchID_Fragment : Fragment() {
                 dialogFragment.isCancelable = false
                 dialogFragment.show(requireFragmentManager(), "findIdProcess")
                 cancel()
-                Log.d("finalId", id)
+
                 setFragmentResult("requestKey", bundleOf("bundleKey" to id))
             }
         }

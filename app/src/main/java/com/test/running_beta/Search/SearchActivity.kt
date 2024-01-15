@@ -47,11 +47,6 @@ class SearchActivity : AppCompatActivity() {
 
         }.attach()
 
-        supportFragmentManager.setFragmentResultListener("requestKey", this) { key, bundle ->
-            if (key == "requestKey") {
-                id = bundle.getString("bundleKey").toString()
-            }
-        }
 
 
     }

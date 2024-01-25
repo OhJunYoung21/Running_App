@@ -1,9 +1,8 @@
 # Fragment와 Activity사이에서 데이터를 전달하는 방법
   * Bundle 사용
   * SharedViewModel 사용
-  * setFragmentListener 사용
+  * FragmentResultAPI 사용
 
-## Fragment & Activity간 데이터전달을 위해서 setFragmentResultListener,setFragmentResult를 사용할 수 있다.
 
 ### setFragmentResult는 송신하는 프래그먼트에서 사용한다.
 

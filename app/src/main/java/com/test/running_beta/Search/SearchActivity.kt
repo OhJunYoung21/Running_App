@@ -22,6 +22,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var ViewPager2: ViewPager2
 
     private var id = ""
+    private var password = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -51,6 +52,7 @@ class SearchActivity : AppCompatActivity() {
 
         supportFragmentManager.setFragmentResultListener("requestKey", this) { requestKey, bundle ->
             id = bundle.getString("findId").toString()
+            password = bundle.getString("findPassword").toString()
         }
 
     }
@@ -66,6 +68,16 @@ class SearchActivity : AppCompatActivity() {
                 } else {
                     val intent = Intent(this, LoginActivity::class.java)
                     intent.putExtra("tempId", "시발")
+                    startActivity(intent)
+                }
+
+                if (password != "") {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.putExtra("tempPassword", password)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.putExtra("tempPassword", "시발")
                     startActivity(intent)
                 }
 

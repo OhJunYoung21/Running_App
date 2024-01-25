@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import com.test.running_beta.ApplicationClass.MyApplication
 import com.test.running_beta.UI.ConfirmDialog
 import com.test.running_beta.databinding.FragmentSearchIDBinding
@@ -45,6 +47,9 @@ class SearchID_Fragment : Fragment() {
                     dialogFragment.isCancelable = false
                     dialogFragment.show(requireFragmentManager(), "findIdProcess")
                 }
+
+                setFragmentResult("requestKey", bundleOf("findId" to id))
+
                 cancel()
             }
 
@@ -70,5 +75,12 @@ class SearchID_Fragment : Fragment() {
             findId(name, number)
         }.await()
     }
+
+    /**private suspend fun deliverId(id: String) {
+    return CoroutineScope(Dispatchers.IO).async {
+    setFragmentResult("requestKey", bundleOf("findId" to id))
+    }.await()
+
+    }**/
 }
 

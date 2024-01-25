@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginId.setText(intent.getStringExtra("tempId") ?: "")
+        binding.loginPw.setText(intent.getStringExtra("tempPassword") ?: "")
 
         val application = application as MyApplication
 

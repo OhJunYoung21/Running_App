@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import com.test.running_beta.UI.ConfirmDialog
 import com.test.running_beta.databinding.FragmentSearchPWBinding
 import com.test.running_beta.roomDB.AppDatabase
@@ -56,6 +58,8 @@ class SearchPW_Fragment : Fragment() {
                 dialog.isCancelable = false
 
                 dialog.show(requireFragmentManager(), "findPwProcess")
+
+                setFragmentResult("requestKey", bundleOf("findPassword" to password))
 
                 cancel()
 

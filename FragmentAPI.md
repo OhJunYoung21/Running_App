@@ -25,6 +25,8 @@ CoroutineScope(Dispatchers.IO).launch {
 
 위 코드의 cancel()위 부분을 보면 setFragmentResult를 사용하고 있다.
 
+---
+
 ### setFragmentResultListener는 데이터를 수신하는 액티비티 또는 프래그먼트에서 사용한다.
 
 ~~~kotlin

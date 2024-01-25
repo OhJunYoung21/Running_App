@@ -48,7 +48,6 @@ class SearchActivity : AppCompatActivity() {
         }.attach()
 
 
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

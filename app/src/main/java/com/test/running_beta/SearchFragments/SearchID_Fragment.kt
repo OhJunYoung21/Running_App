@@ -23,7 +23,6 @@ class SearchID_Fragment : Fragment() {
     lateinit var application: MyApplication
 
     lateinit var db: AppDatabase
-    private lateinit var id: String
     private val title: String = "아이디 찾기"
     private val content_1: String = "아이디"
 
@@ -37,21 +36,19 @@ class SearchID_Fragment : Fragment() {
             name = binding.Name.text.toString().trim()
 
             number = binding.Number.text.toString().trim()
-            //TODO:ID 검색 완료시 프래그먼트 전역변수에 값 할당(지연초기화 사용)
 
             CoroutineScope(Dispatchers.IO).launch {
-                id = if (findIdAsync(name, number) != null) {
-                    findIdAsync(name, number).toString()
-                } else {
-                    ""
+                val id = findIdAsync(name, number).toString()
+
+                CoroutineScope(Dispatchers.Main).launch {
+                    val dialogFragment = ConfirmDialog(title, content_1, id, 0)
+                    dialogFragment.isCancelable = false
+                    dialogFragment.show(requireFragmentManager(), "findIdProcess")
                 }
-                val dialogFragment = ConfirmDialog(title, content_1, id, 0)
-                dialogFragment.isCancelable = false
-                dialogFragment.show(requireFragmentManager(), "findIdProcess")
-
                 cancel()
-
             }
+
+
         }
     }
 
@@ -65,8 +62,7 @@ class SearchID_Fragment : Fragment() {
 
     private fun findId(name: String, number: String): String {
         db = AppDatabase.getInstance(requireContext())
-        val id = db.getUserDAO().getIdByName(name, number)
-        return id
+        return db.getUserDAO().getIdByName(name, number)
     }
 
     private suspend fun findIdAsync(name: String, number: String): String? {

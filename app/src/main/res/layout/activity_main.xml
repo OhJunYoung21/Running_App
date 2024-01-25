@@ -72,7 +72,7 @@
         android:layout_height="150dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:text="로그이웃"
+        android:text="로그아웃"
         app:layout_constraintLeft_toRightOf="@id/recordBtn"
         app:layout_constraintTop_toBottomOf="@id/cycleBtn" />
 

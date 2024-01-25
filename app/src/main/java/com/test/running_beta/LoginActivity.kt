@@ -24,8 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        val foundId = intent.getStringExtra("foundId") ?: ""
-        binding.loginId.setText(foundId)
+        binding.loginId.setText(intent.getStringExtra("tempId") ?: "")
 
         val application = application as MyApplication
 
